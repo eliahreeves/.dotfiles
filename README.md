@@ -21,4 +21,3 @@ stow nvim
 ```PowerShell
 New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\nvim -Target "C:\Users\ereec\.dotfiles\nvim\.config\nvim\"
 ```
-
