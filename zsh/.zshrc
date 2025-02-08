@@ -15,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME=""powerlevel10k/powerlevel10k""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -77,10 +77,24 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting fast-syntax-highlighting zsh-autosuggestions)
-# zsh-autocomplete
+plugins=(git)
+
 source $ZSH/oh-my-zsh.sh
 
+
+
+
+###Path
+#
+# export PATH=$PATH:/opt/nvim-linux64/bin
+# export PATH=$PATH:~/development/flutter/bin
+# export PATH=$PATH:~/development/Android/Sdk/platform-tools
+# export PATH=$PATH:~/development/utils/oss-cad-suite/bin
+# export PATH=$PATH:~/development/utils/sv2v-Linux
+# export PATH=$PATH:~/development/utils/verible-v0.0-3831-g32b2456e/bin
+# export PATH=$PATH:~/development/utils/Vivado/2024.2/bin
+# export PATH=$PATH:~/Documents/git_projects/conb/target/release
+# export PATH=$PATH:~/Downloads/spice/bin
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -110,19 +124,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# PATH
-export PATH=$PATH:/opt/nvim-linux64/bin
-export PATH=$PATH:~/development/flutter/bin
-export PATH=$PATH:~/development/Android/Sdk/platform-tools
-export PATH=$PATH:~/development/utils/oss-cad-suite/bin
-export PATH=$PATH:~/development/utils/sv2v-Linux
-export PATH=$PATH:~/development/utils/verible-v0.0-3831-g32b2456e/bin
-export PATH=$PATH:~/development/utils/Vivado/2024.2/bin
-export PATH=$PATH:~/Documents/git_projects/conb/target/release
-export PATH=$PATH:~/Downloads/spice/bin
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
