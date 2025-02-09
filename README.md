@@ -1,6 +1,6 @@
 # Eliah Reeves dotfiles
 
-My dotfiles to configure an editor in Ubuntu and other Unix-like systems.
+My .dotfiles to configure an editor in Ubuntu and other Unix-like systems.
 
 ## Linux Usage
 
