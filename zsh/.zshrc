@@ -85,17 +85,32 @@ source $ZSH/oh-my-zsh.sh
 
 
 ###Path
+
+# Andorid
+# export ANDROID=$HOME/Programs/Android
+# export PATH=$ANDROID/cmdline-tools/latest:$PATH
+# export PATH=$ANDROID/cmdline-tools/latest/bin:$PATH
+# export PATH=$ANDROID/platform-tools:$PATH
+# # Android SDK
+# export ANDROID_SDK=$HOME/Programs/Android/
 #
-# export PATH=$PATH:/opt/nvim-linux64/bin
-# export PATH=$PATH:~/development/flutter/bin
-# export PATH=$PATH:~/development/Android/Sdk/platform-tools
+# # Flutter
+# export PATH=$PATH:~/Programs/flutter/bin
+
+# 239 FPGA stuff
+export PATH=$PATH:~/Programs/utils/zachjs-sv2v
+export PATH=$PATH:~/Programs/utils/verible-v0.0-3933-g0e3fe53a/bin
+
 # export PATH=$PATH:~/development/utils/oss-cad-suite/bin
 # export PATH=$PATH:~/development/utils/sv2v-Linux
 # export PATH=$PATH:~/development/utils/verible-v0.0-3831-g32b2456e/bin
 # export PATH=$PATH:~/development/utils/Vivado/2024.2/bin
 # export PATH=$PATH:~/Documents/git_projects/conb/target/release
 # export PATH=$PATH:~/Downloads/spice/bin
+
+# Rust
 export PATH=$PATH:~/.cargo/bin
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
