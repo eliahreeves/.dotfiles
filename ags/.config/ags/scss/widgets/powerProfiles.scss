@@ -1,0 +1,10 @@
+@use "../variables" as vars;
+.power-profile-item {
+}
+
+.balanced {
+  border-color: #FF00FF;
+  &.active {
+    color: #FF00FF;
+  }
+}
