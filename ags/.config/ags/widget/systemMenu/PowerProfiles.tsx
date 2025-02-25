@@ -5,10 +5,20 @@ import { bind } from 'astal';
 import { isPrimaryClick } from "../utils/utils";
 const powerProfilesService = AstalPowerProfiles.get_default();
 type ProfileType = 'balanced' | 'power-saver' | 'performance';
+
+function getBorderRadius(index: number): string {
+  if (index == 0) {
+    return "border-radius: 10px 0 0 10px;"
+  } else if (index == 2) {
+    return "border-radius: 0 10px 10px 0"
+  }
+  return "border-radius: 0;";
+}
+
 export default function () {
   const icons = {
-    balanced: '',
-    'power-saver': '',
+    balanced: ' ',
+    'power-saver': ' ',
     performance: '󱐋',
   }
   const powerProfiles = powerProfilesService.get_profiles();
@@ -16,13 +26,14 @@ export default function () {
     vertical={false}
     className="row"
     halign={Gtk.Align.CENTER}>
-    {powerProfiles.map((powerProfile: AstalPowerProfiles.Profile) => {
+    {powerProfiles.map((powerProfile: AstalPowerProfiles.Profile, index: number) => {
       const profileType = powerProfile.profile as ProfileType;
 
       return (
         <button
+          css={getBorderRadius(index)}
           className={bind(powerProfilesService, 'activeProfile').as(
-            (active) => `${profileType} power-profile-item ${active === powerProfile.profile ? 'active' : ''}`,
+            (active) => `power-profile-button ${profileType}${active === powerProfile.profile ? '-active' : ''}`,
           )}
           onClick={(_, event) => {
             if (isPrimaryClick(event)) {
@@ -36,26 +47,3 @@ export default function () {
     })}
   </box>)
 }
-
-// V<button
-//     className="systemMenuIconButton"
-//     label=""
-//     // setup={(self) => self.hook(powerprofiles.get_active_profile(), ()=>)}
-//     onClicked={() => {
-//       execAsync("uwsm stop")
-//       powerprofiles.set_active_profile("balanced")
-//     }} />
-//   <button
-//     className="systemMenuIconButton"
-//     label=""
-//     onClicked={() => {
-//       powerprofiles.set_active_profile("balanced")
-//     }} />
-//   <button
-//     className="systemMenuIconButton"
-//     label="󱐋"
-//     onClicked={() => {
-//       powerprofiles.set_active_profile("performance")
-//
-//     }} />
-//

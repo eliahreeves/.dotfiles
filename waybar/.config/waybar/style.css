@@ -64,9 +64,11 @@ button:hover {
 }
 
 #mpd,
+#bluetooth,
 #custom-runcat,
 #cpu,
 #memory,
+#power-profiles-daemon,
 #battery,
 #tray,
 #temperature,
@@ -78,10 +80,11 @@ button:hover {
   padding-top: 0;
   padding-right: 15px;
   padding-bottom: 0;
-  padding-left: 12px;
+  padding-left: 15px;
   background-color: rgba(24, 22, 22, 1);
 }
 #custom-quick-settings {
+  padding-right: 10px;
   color: #8ba4b0;
 }
 
@@ -104,29 +107,29 @@ button:hover {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-  background-color: #AB0800;
+  background-color: #ab0800;
 }
 #temperature.critical {
-  background-color: #AB0800;
+  background-color: #ab0800;
 }
-#power-profiles-daemon {
-  padding-right: 15px;
-}
-
-#power-profiles-daemon.performance {
-  background-color: #AB0800;
-  color: #ffffff;
-}
-
-#power-profiles-daemon.balanced {
-  background-color: #2980b9;
-  color: #ffffff;
-}
-
-#power-profiles-daemon.power-saver {
-  background-color: #2ecc71;
-  color: #000000;
-}
+/*#power-profiles-daemon {*/
+/*  padding-right: 15px;*/
+/*}*/
+/**/
+/*#power-profiles-daemon.performance {*/
+/*  background-color: #ab0800;*/
+/*  color: #ffffff;*/
+/*}*/
+/**/
+/*#power-profiles-daemon.balanced {*/
+/*  background-color: #2980b9;*/
+/*  color: #ffffff;*/
+/*}*/
+/**/
+/*#power-profiles-daemon.power-saver {*/
+/*  background-color: #2ecc71;*/
+/*  color: #000000;*/
+/*}*/
 
 label:focus {
   background-color: #000000;
@@ -156,7 +159,7 @@ label:focus {
 }
 
 #wireplumber.muted {
-  background-color: #AB0800;
+  background-color: #ab0800;
 }
 
 #custom-media {
@@ -187,7 +190,7 @@ label:focus {
   padding-top: 0;
   padding-right: 15px;
   padding-bottom: 0;
-  padding-left: 10px;
+  padding-left: 15px;
   background-color: rgba(24, 22, 22, 1);
 }
 
