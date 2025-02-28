@@ -63,29 +63,58 @@ button:hover {
   box-shadow: inset 0 -3px #ffffff;
 }
 
-#mpd,
 #bluetooth,
-#custom-runcat,
 #cpu,
 #memory,
 #power-profiles-daemon,
 #battery,
-#tray,
 #temperature,
-#clock,
 #custom-quick-settings,
 #network,
+#clock,
 #window {
-  border-radius: 10px;
   padding-top: 0;
-  padding-right: 15px;
+  padding-right: 6px;
   padding-bottom: 0;
-  padding-left: 15px;
+  padding-left: 6px;
   background-color: rgba(24, 22, 22, 1);
 }
+
+#memory {
+  padding-left: 12px;
+  border-radius: 10px 0 0 10px;
+}
+
+#battery {
+  padding-right: 12px;
+  border-radius: 0 10px 10px 0;
+}
+
+#bluetooth:hover,
+#cpu:hover,
+#memory:hover,
+#power-profiles-daemon:hover,
+#battery:hover,
+#temperature:hover,
+#custom-quick-settings:hover,
+#network:hover,
+#clock:hover {
+  color: #8ba4b0;
+}
+
+#clock {
+  border-radius: 10px;
+}
+
 #custom-quick-settings {
+  border-radius: 10px;
+  padding-left: 15px;
   padding-right: 10px;
   color: #8ba4b0;
+  margin-left: 5px;
+}
+#custom-quick-settings:hover {
+  color: #c5c9c5;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -98,13 +127,6 @@ button:hover {
   margin-right: 0;
 }
 
-@keyframes blink {
-  to {
-    background-color: #ffffff;
-    color: #000000;
-  }
-}
-
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
   background-color: #ab0800;
@@ -112,77 +134,9 @@ button:hover {
 #temperature.critical {
   background-color: #ab0800;
 }
-/*#power-profiles-daemon {*/
-/*  padding-right: 15px;*/
-/*}*/
-/**/
-/*#power-profiles-daemon.performance {*/
-/*  background-color: #ab0800;*/
-/*  color: #ffffff;*/
-/*}*/
-/**/
-/*#power-profiles-daemon.balanced {*/
-/*  background-color: #2980b9;*/
-/*  color: #ffffff;*/
-/*}*/
-/**/
-/*#power-profiles-daemon.power-saver {*/
-/*  background-color: #2ecc71;*/
-/*  color: #000000;*/
-/*}*/
 
 label:focus {
   background-color: #000000;
-}
-
-#disk {
-  background-color: #964b00;
-}
-
-#backlight {
-  background-color: #90b1b1;
-}
-
-#pulseaudio {
-  background-color: #f1c40f;
-  color: #000000;
-}
-
-#pulseaudio.muted {
-  background-color: #90b1b1;
-  color: #2a5c45;
-}
-
-#wireplumber {
-  background-color: #fff0f5;
-  color: #000000;
-}
-
-#wireplumber.muted {
-  background-color: #ab0800;
-}
-
-#custom-media {
-  background-color: #66cc99;
-  color: #2a5c45;
-  min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-  background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-  background-color: #ffa000;
-}
-
-#tray > .passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-  -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
 }
 
 #idle_inhibitor {
@@ -191,52 +145,11 @@ label:focus {
   padding-right: 15px;
   padding-bottom: 0;
   padding-left: 15px;
+  margin-right: 5px;
   background-color: rgba(24, 22, 22, 1);
 }
 
 #idle_inhibitor.activated {
   background-color: #ecf0f1;
   color: #2d3436;
-}
-
-#keyboard-state {
-  padding: 0 0px;
-  min-width: 16px;
-}
-
-#keyboard-state > label {
-  padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-  background-color: transparent;
-}
-
-#privacy {
-  padding: 0;
-}
-
-#privacy-item {
-  padding: 0 5px;
-  color: white;
-}
-
-#privacy-item.screenshare {
-  background-color: #cf5700;
-}
-
-#privacy-item.audio-in {
-  background-color: #1ca000;
-}
-
-#privacy-item.audio-out {
-  background-color: #0069d4;
 }
