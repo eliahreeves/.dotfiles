@@ -30,7 +30,9 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:~/Tools/fpga-utils/oss-cad-suite/bin
 export PATH=$PATH:~/Tools/fpga-utils/zachjs-sv2v
 export PATH=$PATH:~/Tools/fpga-utils/verible-v0.0-3946-g851d3ff4/bin
-
+export PATH=$PATH:~/Tools/fpga-utils/xschem/bin
+export PATH=$PATH:~/Tools/fpga-utils/netgen/bin
+export PDK_ROOT=~/.volare
 # sudo pacman -S libxcrypt-compat
 # sudo pacman -S inetutils
 # yay -S ncurses5-compat-libs
@@ -40,3 +42,5 @@ export PATH=$PATH:~/Tools/Xilinx/Vivado/2024.2/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.local/bin/env"

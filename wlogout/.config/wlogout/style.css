@@ -1,7 +1,5 @@
-@import "colors.css";
-
 * {
-  font-family: "CaskaydiMono Nerd Font";
+  font-family: "CaskaydiaMono Nerd Font";
   box-shadow: none;
 }
 
@@ -11,7 +9,7 @@ window {
 }
 
 button {
-  color: @foreground;
+  color: #c5c9c5;
   font-size: 23px;
 
   margin: 120px 0px;
@@ -20,7 +18,7 @@ button {
   background-position: center;
   background-size: 20%;
 
-  background-color: @color1;
+  background-color: #181616;
   opacity: 0.8;
   border: none;
   border-radius: 0px;
@@ -29,12 +27,12 @@ button {
 
 button:focus {
   background-size: 25%;
-  background-color: @color3;
+  background-color: #332e2e;
 }
 
 button:hover {
   background-size: 35%;
-  background-color: @color3;
+  background-color: #332e2e;
   margin: 75px 0px;
   border-radius: 50px;
 }
@@ -58,10 +56,10 @@ Buttons
 }
 
 #reboot {
-  background-image: image(url("icons/reboot.png"));
+  background-image: image(url("icons/reboot.svg"));
 }
 
-#suspend {
+#hibernate {
   background-image: image(url("icons/suspend.png"));
 }
 
