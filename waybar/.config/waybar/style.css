@@ -40,9 +40,9 @@ button:hover {
 }
 
 #workspaces button {
-  border-radius: 5px;
+  border-radius: 10px;
   transition: ease 0.5s;
-  padding: 0 15px;
+  padding: 0 6px;
   margin: 2px 3px;
   background-color: transparent;
 }
@@ -142,7 +142,7 @@ label:focus {
 #idle_inhibitor {
   border-radius: 10px;
   padding-top: 0;
-  padding-right: 15px;
+  padding-right: 13px;
   padding-bottom: 0;
   padding-left: 15px;
   margin-right: 5px;
@@ -150,6 +150,6 @@ label:focus {
 }
 
 #idle_inhibitor.activated {
-  background-color: #ecf0f1;
-  color: #2d3436;
+  background-color: #232425;
+  color: #c5c9c5;
 }
