@@ -1,14 +1,14 @@
 -- return {
+--   { "vague2k/vague.nvim" },
 --   {
---     "vague2k/vague.nvim",
---     config = function()
---       require("vague").setup({
---         vim.cmd("colorscheme vague"),
---       })
---     end,
+--     "LazyVim/LazyVim",
+--     opts = {
+--       colorscheme = "vague",
+--     },
 --   },
 -- }
 return {
+  { "rebelot/kanagawa.nvim" },
   { "vague2k/vague.nvim" },
   {
     "LazyVim/LazyVim",
