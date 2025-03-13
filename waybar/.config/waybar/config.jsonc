@@ -104,6 +104,6 @@
     "format-icons": {
       "wifi": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
     },
-    "on-click": "kitty nmtui",
+    "on-click": "XDG_CURRENT_DESKTOP=GNOME gnome-control-center wifi",
   },
 }
