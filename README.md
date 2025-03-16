@@ -1,6 +1,4 @@
-# Eliah Reeves dotfiles
-
-My .dotfiles
+#dotfiles
 
 ## Linux Usage
 
