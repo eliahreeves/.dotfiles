@@ -1,10 +1,10 @@
 # Eliah Reeves dotfiles
 
-My .dotfiles to configure an editor in Ubuntu and other Unix-like systems.
+My .dotfiles
 
 ## Linux Usage
 
-I made these to work with stow. To configure a tool simply run:
+Most configurations are made for GNU stow. To configure a tool simply run:
 
 ```bash
 stow <NAME_OF_TOOL>
