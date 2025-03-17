@@ -17,15 +17,19 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(git zsh-bat zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
+alias rcat="command cat"
+alias cat="bat --paging=never --style=plain"
+
+
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # My path
-
 # CSE293 fpga until
 export PATH=$PATH:~/Tools/fpga-utils/oss-cad-suite/bin
 export PATH=$PATH:~/Tools/fpga-utils/zachjs-sv2v

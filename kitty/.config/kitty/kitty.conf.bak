@@ -1,5 +1,5 @@
 # BEGIN_KITTY_THEME
-# Kanagawa_dragon
+# Rosé Pine
 include current-theme.conf
 # END_KITTY_THEME
 
@@ -8,8 +8,6 @@ tab_powerline_style round
 hide_window_decorations yes
 background_opacity 0.5
 enable_audio_bell no
-background #000000
-foreground #C5C9C5
 
 
 # Font
@@ -46,6 +44,7 @@ map super+j detach_tab ask
 
 map super+shift+t new_os_window_with_cwd
 
-map ctrl+f launch --type=overlay --stdin-source=@screen_scrollback nvim -c 'set nobackup nowritebackup' -c 'set buftype=nofile' -c 'normal G'
+scrollback_pager sh -c "ansi2txt | nvim -c 'set nobackup nowritebackup' -c 'set buftype=nofile'"
+map ctrl+f show_scrollback
 
 confirm_os_window_close 2
