@@ -31,7 +31,7 @@
 .notification-content {
   background: transparent;
   border-radius: 0px;
-  padding: 15px;
+  padding: 10px;
 }
 .image,
 .body-image {
@@ -85,10 +85,10 @@
 ********************************/
 
 .widget-dnd {
-  padding: 10px 10px 0px;
+  padding: 0px 10px 0px;
 }
 .widget-title {
-  padding: 10px 10px 0px;
+  padding: 0px 10px 0px;
 }
 /*UNCOMMENT TO MAKE SWITCHES DARK*/
 /*.widget-dnd > switch:checked {*/
@@ -97,7 +97,7 @@
 .control-center {
   background: @background2;
   border-radius: 15px;
-  margin-top: 8px;
+  /*margin-top: 8px;*/
 }
 
 .notification-row {
@@ -122,7 +122,7 @@
 .widget-mpris {
   margin: 0px;
   padding: 0px;
-  border-radius: 12px;
+  border-radius: 10px;
   background: @background2;
 }
 

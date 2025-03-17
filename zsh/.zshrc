@@ -20,7 +20,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 alias rcat="command cat"
-alias cat="bat --paging=never --style=plain"
+alias cat="bat"
 
 
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
