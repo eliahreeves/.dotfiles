@@ -32,11 +32,11 @@ source $ZSH/oh-my-zsh.sh
 # My path
 
 # CSE293 fpga until
-export PATH=$PATH:~/Tools/fpga-utils/oss-cad-suite/bin
-export PATH=$PATH:~/Tools/fpga-utils/zachjs-sv2v
-export PATH=$PATH:~/Tools/fpga-utils/verible-v0.0-3946-g851d3ff4/bin
-export PATH=$PATH:~/Tools/fpga-utils/xschem/bin
-export PATH=$PATH:~/Tools/fpga-utils/netgen/bin
+export PATH=$PATH:~/Programs/fpga-utils/oss-cad-suite/bin
+export PATH=$PATH:~/Programs/fpga-utils/zachjs-sv2v
+export PATH=$PATH:~/Programs/fpga-utils/verible-v0.0-3946-g851d3ff4/bin
+export PATH=$PATH:~/Programs/fpga-utils/xschem/bin
+export PATH=$PATH:~/Programs/fpga-utils/netgen/bin
 
 # Flutter
 export CHROME_EXECUTABLE=$(which brave)

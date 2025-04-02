@@ -1,31 +1,24 @@
 import { App, Astal, Gtk, Gdk } from "astal/gtk3";
-import { Variable, bind } from "astal";
-import { exec } from "astal/process";
-import { Entry } from "astal/gtk3/widget";
+import { Variable } from "astal";
+import { exec, execAsync } from "astal/process";
 import Apps from "gi://AstalApps";
 
 const MAX_ITEMS = 8;
+const files = Variable<BasicFile[]>([]);
+type BasicFile = { name: string; path: string };
+type Item = {
+  name: string;
+  description?: string;
+  iconName?: string;
+  launch: () => void;
+};
+
 function hide() {
   App.get_window("Runner")!.hide();
+  files.set([]);
 }
-// function List(): Gtk.Widget {
-//   return (
-//     <box orientation={1} css="background-color: transparent; padding: 0px;">
-//       {options((items) =>
-//         items.map((item) => (
-//           <button
-//             onClicked={(self) => print(self, "was clicked")}
-//             cursor={"pointer"}
-//           >
-//             {item.name}
-//           </button>
-//         )),
-//       )}
-//     </box>
-//   );
-// }
-//
-function AppButton({ app }: { app: Apps.Application }) {
+
+function AppButton({ app }: { app: Item }) {
   return (
     <button
       className="AppButton"
@@ -35,7 +28,7 @@ function AppButton({ app }: { app: Apps.Application }) {
       }}
     >
       <box>
-        <icon icon={app.iconName} />
+        <icon icon={app.iconName ?? "applications-system"} />
         <box valign={Gtk.Align.CENTER} vertical>
           <label className="name" truncate xalign={0} label={app.name} />
           {app.description && (
@@ -52,43 +45,123 @@ function AppButton({ app }: { app: Apps.Application }) {
   );
 }
 
+function getDisplayPath(path: string): string {
+  const split_path = path.split("/").filter(Boolean).slice(2, -1);
+  const shortened_path = split_path.map((value, index) => {
+    if (index >= split_path.length - 2) {
+      return value;
+    }
+    return value.charAt(0);
+  });
+
+  return `${["~", ...shortened_path].join("/")}/`;
+}
+
+function buildList(
+  search: string,
+  apps: Apps.Apps,
+  files: BasicFile[],
+): Item[] {
+  const apps_list = apps.fuzzy_query(search).slice(0, MAX_ITEMS);
+  if (apps_list.length >= MAX_ITEMS) {
+    return apps_list;
+  }
+
+  const file_list = files
+    .filter((file) => file.name.includes(search))
+    .slice(0, MAX_ITEMS - apps_list.length)
+    .map((file) => {
+      return {
+        iconName: file.path.endsWith("/") ? "folder" : "text-x-generic",
+        name: file.name,
+        description: getDisplayPath(file.path),
+        launch: () => {
+          exec(["systemd-run", "--user", "xdg-open", file.path]);
+        },
+      };
+    });
+
+  // const file_list: Item[] = exec()
+  //   .split("\n")
+  //   .slice(0, -1)
+  //   .slice(0, MAX_ITEMS - apps_list.length)
+  //   .map((path) => {
+  //     const split_path = path.replace(/^\/|\/$/g, "").split("/");
+  //     print(split_path);
+  //     return {
+  //       iconName: path.endsWith("/") ? "folder" : "text-x-generic",
+  //       name: split_path.slice(-1)[0],
+  //       description: path,
+  //       launch: () => {
+  //         exec(["systemd-run", "--user", "xdg-open", path]);
+  //       },
+  //     };
+  //   });
+
+  const files_and_apps = [...apps_list, ...file_list];
+
+  if (files_and_apps.length >= MAX_ITEMS) {
+    return files_and_apps;
+  }
+
+  return [
+    ...files_and_apps,
+    {
+      name: `Search: ${search}`,
+      launch: () => {
+        exec([
+          "systemd-run",
+          "--user",
+          "xdg-open",
+          `https://www.google.com/search?q=${encodeURIComponent(search)}`,
+        ]);
+      },
+      description: "Search with Google",
+      iconName: "system-search",
+    },
+  ];
+}
+
 export default function Runner(): Gtk.Widget {
-  const { TOP } = Astal.WindowAnchor;
   const { CENTER } = Gtk.Align;
   const apps = new Apps.Apps();
   const text = Variable("");
   const width = Variable(1000);
-  const list = text((text) => apps.fuzzy_query(text).slice(0, MAX_ITEMS));
-  // const display = Gdk.Display.get_default();
-  // const monitor = display!.get_primary_monitor();
-  // const geometry = monitor!.get_geometry();
-  // const screenHeight = geometry.height;
-
-  // function inputHandler(self: Entry) {
-  //   const arg: ScriptArg = { search: self.text };
-  //   const argStr = JSON.stringify(arg);
-  //   const res = JSON.parse(
-  //     exec(["./scripts/script.py", argStr]),
-  //   ) as ScriptReturn;
-  //   options.set(res.options);
-  // }
+  const list = Variable.derive([text, files], (text, files) =>
+    buildList(text, apps, files),
+  );
   const onEnter = () => {
-    apps.fuzzy_query(text.get())?.[0].launch();
+    list.get()[0]?.launch();
     hide();
   };
-  return (
+  const runnerWindow = (
     <window
       name="Runner"
       anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM}
       exclusivity={Astal.Exclusivity.IGNORE}
       keymode={Astal.Keymode.ON_DEMAND}
       application={App}
+      visible={false}
       onShow={(self) => {
+        execAsync('bash -c "fd -i . $HOME"').then((out) => {
+          files.set(
+            out
+              .trim()
+              .split("\n")
+              .map((path) => {
+                const parts = path.split("/").filter(Boolean);
+                return { path: path, name: parts[parts.length - 1] ?? "" };
+              }),
+          );
+        });
         text.set("");
         width.set(self.get_current_monitor().workarea.width);
       }}
       onKeyPressEvent={function (self, event: Gdk.Event) {
-        if (event.get_keyval()[1] === Gdk.KEY_Escape) self.hide();
+        if (event.get_keyval()[1] === Gdk.KEY_Escape) {
+          self.hide();
+          files.set([]);
+        }
       }}
     >
       <box>
@@ -96,20 +169,24 @@ export default function Runner(): Gtk.Widget {
         <box hexpand={false} vertical>
           <eventbox heightRequest={100} onClick={hide} />
           <box widthRequest={500} className="Applauncher" vertical>
-            <entry
-              placeholderText="Search"
-              text={text()}
-              onChanged={(self) => text.set(self.text)}
-              onActivate={onEnter}
-            />
+            <box className="search">
+              <icon icon="system-search-symbolic" />
+              <entry
+                hexpand
+                placeholderText="Search"
+                text={text()}
+                onChanged={(self) => text.set(self.text)}
+                onActivate={onEnter}
+              />
+            </box>
             <box spacing={6} vertical>
-              {list.as((list) => list.map((app) => <AppButton app={app} />))}
+              {list((list) => list.map((app) => <AppButton app={app} />))}
             </box>
             <box
               halign={CENTER}
               className="not-found"
               vertical
-              visible={list.as((l) => l.length === 0)}
+              visible={list((l) => l.length === 0)}
             >
               <icon icon="system-search-symbolic" />
               <label label="No match found" />
@@ -121,45 +198,5 @@ export default function Runner(): Gtk.Widget {
       </box>
     </window>
   );
-  return (
-    <window
-      className="Runner"
-      name="Runner"
-      anchor={TOP}
-      application={App}
-      keymode={Astal.Keymode.ON_DEMAND}
-      layer={Astal.Layer.TOP}
-      exclusivity={Astal.Exclusivity.IGNORE}
-      onKeyPressEvent={function (self, event: Gdk.Event) {
-        if (event.get_keyval()[1] === Gdk.KEY_Escape) self.hide();
-      }}
-      onShow={(self) => {
-        text.set("");
-        print(text.get());
-        width.set(self.get_current_monitor().workarea.width);
-      }}
-    >
-      <box>
-        <eventbox widthRequest={width((w) => w / 2)} expand onClick={hide} />
-        <box hexpand={true} vertical>
-          <eventbox heightRequest={100} onClick={hide} />
-          <box>
-            <label label=" " />
-            <entry
-              text={text()}
-              width_chars={32}
-              placeholder_text="Search..."
-              onChanged={(self) => text.set(self.text)}
-              onActivate={onEnter}
-            />
-          </box>
-          <box spacing={6} vertical>
-            {list.as((list) => list.map((app) => <AppButton app={app} />))}
-          </box>
-          <eventbox expand hexpand onClick={hide} />
-        </box>
-        <eventbox widthRequest={width((w) => w / 2)} expand onClick={hide} />
-      </box>
-    </window>
-  );
+  return runnerWindow;
 }
