@@ -1,0 +1,89 @@
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+$fg-color: #c5c9c5;
+$bg-color: #181616;
+$bg-hover: #232425;
+@use "sass:string";
+
+@function gtkalpha($c, $a) {
+  @return string.unquote("alpha(#{$c},#{$a})");
+}
+
+window#Runner {
+  all: unset;
+
+  box.Applauncher {
+    font-family: "CaskaydiaMono NF";
+    background-color: $bg-color;
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 0.8rem;
+    box-shadow: 2px 3px 8px 0 gtkalpha(black, 0.4);
+
+    entry {
+      margin-bottom: 0.8rem;
+    }
+
+    button {
+      min-width: 0;
+      min-height: 0;
+      padding: 0.5rem;
+
+      icon {
+        font-size: 3em;
+        margin-right: 0.3rem;
+      }
+
+      label.name {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+
+      label.description {
+        color: gtkalpha($fg-color, 0.8);
+      }
+    }
+
+    box.not-found {
+      padding: 1rem;
+
+      icon {
+        font-size: 6em;
+        color: gtkalpha($fg-color, 0.7);
+      }
+
+      label {
+        color: gtkalpha($fg-color, 0.9);
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+// window.Runner {
+//   font-family: "CaskaydiaMono NF";
+//   font-size: 24px;
+//
+//   > box > box {
+//     margin: 5px 0px;
+//     background-color: $bg-color;
+//     color: $fg-color;
+//     border-radius: 10px;
+//     padding: 15px;
+//     > button {
+//       border-radius: 10px;
+//       margin-bottom: 10px;
+//       padding: 15px;
+//       background: $bg-color;
+//
+//       &:hover {
+//         background: $bg-hover;
+//       }
+//     }
+//     entry {
+//       background-color: transparent;
+//       border: none;
+//       outline: none;
+//       box-shadow: none;
+//       caret-color: $fg-color; // Ensures cursor remains visible
+//     }
+//   }
+// }
