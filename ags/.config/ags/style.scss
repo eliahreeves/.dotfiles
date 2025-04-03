@@ -1,12 +1,15 @@
-// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
-$fg-color: #c5c9c5;
-$bg-color: #181616;
-$bg-hover: #232425;
 @use "sass:string";
 
 @function gtkalpha($c, $a) {
   @return string.unquote("alpha(#{$c},#{$a})");
 }
+
+$opacity: 0.8;
+
+$fg-color: gtkalpha(#c5c9c5, $opacity);
+$bg-color: gtkalpha(#181616, $opacity);
+$container-hover: gtkalpha(#2d2d2d, $opacity);
+$container-color: gtkalpha(#232425, $opacity);
 
 window#Runner {
   all: unset;
@@ -28,6 +31,7 @@ window#Runner {
 
     entry {
       font-size: unset;
+      background-color: $container-color;
       margin-bottom: 0.8rem;
       border: none;
       outline: none;
@@ -40,6 +44,7 @@ window#Runner {
     button {
       padding: 0.5rem;
       border-radius: 10px;
+      background: $container-color;
 
       icon {
         font-size: 3em;
@@ -53,6 +58,9 @@ window#Runner {
 
       label.description {
         color: gtkalpha($fg-color, 0.8);
+      }
+      &:hover {
+        background: $container-hover;
       }
     }
 

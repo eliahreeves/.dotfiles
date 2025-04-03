@@ -5,7 +5,6 @@ import Apps from "gi://AstalApps";
 import { Parser } from "./expr-eval";
 
 const MAX_ITEMS = 8;
-const files = Variable<BasicFile[]>([]);
 type BasicFile = { name: string; path: string };
 type Item = {
   name: string;
@@ -16,7 +15,6 @@ type Item = {
 
 function hide() {
   App.get_window("Runner")!.hide();
-  files.set([]);
 }
 
 function AppButton({ app }: { app: Item }) {
@@ -141,6 +139,7 @@ export default function Runner(): Gtk.Widget {
   const apps = new Apps.Apps();
   const text = Variable("");
   const width = Variable(1000);
+  const files = Variable<BasicFile[]>([]);
   const list = Variable.derive([text, files], (text, files) =>
     buildList(text, apps, files),
   );
@@ -168,13 +167,11 @@ export default function Runner(): Gtk.Widget {
               }),
           );
         });
-        text.set("");
         width.set(self.get_current_monitor().workarea.width);
       }}
       onKeyPressEvent={function (self, event: Gdk.Event) {
         if (event.get_keyval()[1] === Gdk.KEY_Escape) {
           self.hide();
-          files.set([]);
         }
       }}
     >
@@ -212,5 +209,9 @@ export default function Runner(): Gtk.Widget {
       </box>
     </window>
   );
+  runnerWindow.connect("hide", () => {
+    text.set("");
+    files.set([]);
+  });
   return runnerWindow;
 }

@@ -43,7 +43,7 @@ export CHROME_EXECUTABLE=$(which brave)
 export PATH=$PATH:~/Programs/flutter/bin
 
 # ESP32
-alias activate-idf="source ~/Programs/esp/esp-idf/export.sh"
+alias idf-activate="source ~/Programs/esp/esp-idf/export.sh"
 
 # nvm(node/npm)
 export NVM_DIR="$HOME/.nvm"
