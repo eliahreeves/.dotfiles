@@ -42,6 +42,9 @@ export PATH=$PATH:~/Programs/fpga-utils/netgen/bin
 export CHROME_EXECUTABLE=$(which brave)
 export PATH=$PATH:~/Programs/flutter/bin
 
+# ESP32
+alias activate-idf="source ~/Programs/esp/esp-idf/export.sh"
+
 # nvm(node/npm)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

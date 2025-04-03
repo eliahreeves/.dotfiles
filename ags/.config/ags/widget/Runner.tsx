@@ -2,6 +2,7 @@ import { App, Astal, Gtk, Gdk } from "astal/gtk3";
 import { Variable } from "astal";
 import { exec, execAsync } from "astal/process";
 import Apps from "gi://AstalApps";
+import { Parser } from "./expr-eval";
 
 const MAX_ITEMS = 8;
 const files = Variable<BasicFile[]>([]);
@@ -57,19 +58,49 @@ function getDisplayPath(path: string): string {
   return `${["~", ...shortened_path].join("/")}/`;
 }
 
+function evaluateExpression(input: string): number | null {
+  try {
+    const res = Parser.evaluate(input);
+    return res != null && typeof res === "number" && !isNaN(res) ? res : null;
+  } catch {
+    return null;
+  }
+}
+
 function buildList(
   search: string,
   apps: Apps.Apps,
   files: BasicFile[],
 ): Item[] {
-  const apps_list = apps.fuzzy_query(search).slice(0, MAX_ITEMS);
-  if (apps_list.length >= MAX_ITEMS) {
-    return apps_list;
+  const math_res = evaluateExpression(search);
+  const math_res_good = math_res != null;
+  const apps_list: Item[] = apps
+    .fuzzy_query(search)
+    .slice(0, math_res_good ? MAX_ITEMS - 1 : MAX_ITEMS);
+  const math_res_str = math_res_good ? `${math_res}` : "";
+  const apps_calc_list = math_res_good
+    ? [
+        {
+          name: math_res_str,
+          description: "Copy to Clipboard",
+          launch: () => {
+            Gtk.Clipboard.get_default(Gdk.Display.get_default()!)!.set_text(
+              math_res_str,
+              math_res_str.length,
+            );
+          },
+          iconName: "accessories-calculator",
+        },
+        ...apps_list,
+      ]
+    : apps_list;
+  if (apps_calc_list.length >= MAX_ITEMS) {
+    return apps_calc_list;
   }
 
   const file_list = files
     .filter((file) => file.name.includes(search))
-    .slice(0, MAX_ITEMS - apps_list.length)
+    .slice(0, MAX_ITEMS - apps_calc_list.length)
     .map((file) => {
       return {
         iconName: file.path.endsWith("/") ? "folder" : "text-x-generic",
@@ -81,24 +112,7 @@ function buildList(
       };
     });
 
-  // const file_list: Item[] = exec()
-  //   .split("\n")
-  //   .slice(0, -1)
-  //   .slice(0, MAX_ITEMS - apps_list.length)
-  //   .map((path) => {
-  //     const split_path = path.replace(/^\/|\/$/g, "").split("/");
-  //     print(split_path);
-  //     return {
-  //       iconName: path.endsWith("/") ? "folder" : "text-x-generic",
-  //       name: split_path.slice(-1)[0],
-  //       description: path,
-  //       launch: () => {
-  //         exec(["systemd-run", "--user", "xdg-open", path]);
-  //       },
-  //     };
-  //   });
-
-  const files_and_apps = [...apps_list, ...file_list];
+  const files_and_apps = [...apps_calc_list, ...file_list];
 
   if (files_and_apps.length >= MAX_ITEMS) {
     return files_and_apps;
