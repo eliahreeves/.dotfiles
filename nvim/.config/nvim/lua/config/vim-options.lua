@@ -5,6 +5,7 @@ vim.opt.softtabstop = 4 -- Make <Tab> and <BS> behave consistently
 vim.g.mapleader = " "
 vim.opt.swapfile = false
 vim.opt.relativenumber = true
-vim.o.cmdheight = 0
+vim.opt.cmdheight = 0
+vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 
 vim.opt.fillchars:append({ eob = " " })
