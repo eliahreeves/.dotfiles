@@ -5,7 +5,17 @@ return {
     opts = {
         highlight = { timer = 150 },
     },
+    dependencies = { "folke/snacks.nvim" },
     keys = {
+        {
+            "<leader>p",
+            function()
+                Snacks.picker.yanky()
+            end,
+            mode = { "n", "x" },
+            desc = "Open Yank History",
+        },
+
     -- {
     --   "<leader>p",
     --   function()

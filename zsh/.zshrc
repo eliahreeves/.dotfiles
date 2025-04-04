@@ -30,6 +30,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # My path
+export PATH=$PATH:~/.cargo/bin
 
 # CSE293 fpga until
 export PATH=$PATH:~/Programs/fpga-utils/oss-cad-suite/bin

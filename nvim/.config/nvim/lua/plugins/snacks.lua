@@ -53,28 +53,28 @@ return {
             function()
                 Snacks.picker.buffers()
             end,
-            desc = "Buffers",
+            desc = "Search buffers",
         },
         {
             "<leader>/",
             function()
                 Snacks.picker.grep()
             end,
-            desc = "Grep",
+            desc = "Search text",
         },
         {
             "<leader>:",
             function()
                 Snacks.picker.command_history()
             end,
-            desc = "Command History",
+            desc = "Seach command history",
         },
         {
             "<leader>n",
             function()
                 Snacks.picker.notifications()
             end,
-            desc = "Notification History",
+            desc = "Search notification history",
         },
         -- LazyGit
         {

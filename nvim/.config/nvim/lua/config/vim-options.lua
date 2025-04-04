@@ -9,3 +9,11 @@ vim.opt.cmdheight = 0
 vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 
 vim.opt.fillchars:append({ eob = " " })
+
+local map = vim.keymap.set
+
+map("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer", noremap = true, silent = true })
+map("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Close other buffers", noremap = true, silent = true })
+map("n", "<leader>bb", "<C-^>", { desc = "Previous buffer", noremap = true, silent = true })
+map("n", "<leader>bl", ":bnext<CR>", { desc = "Next buffer", noremap = true, silent = true })
+map("n", "<leader>bh", ":bprevious<CR>", { desc = "Previous buffer", noremap = true, silent = true })
