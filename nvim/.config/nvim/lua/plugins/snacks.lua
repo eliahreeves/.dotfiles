@@ -37,6 +37,11 @@ return {
         indent = { enabled = true },
         scroll = { enabled = true },
         image = { enabled = true },
+        notifier = {
+            enabled = true,
+            timeout = 3000,
+        },
+        bigfile = { enabled = true },
     },
 
     keys = {
