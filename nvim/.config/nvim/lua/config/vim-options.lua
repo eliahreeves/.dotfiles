@@ -17,3 +17,9 @@ map("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Close other buffers", norema
 map("n", "<leader>bb", "<C-^>", { desc = "Previous buffer", noremap = true, silent = true })
 map("n", "<leader>bl", ":bnext<CR>", { desc = "Next buffer", noremap = true, silent = true })
 map("n", "<leader>bh", ":bprevious<CR>", { desc = "Previous buffer", noremap = true, silent = true })
+map("n", "L", ":bnext<CR>", { desc = "Next buffer", noremap = true, silent = true })
+map("n", "H", ":bprevious<CR>", { desc = "Previous buffer", noremap = true, silent = true })
+
+map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { noremap = true, silent = true })
+
+-- vim.opt.laststatus = 0

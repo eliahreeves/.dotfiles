@@ -49,6 +49,18 @@ export PATH=$PATH:~/Programs/flutter/bin
 # ESP32
 alias idf-activate="source ~/Programs/esp/esp-idf/export.sh"
 
+# MATLAB
+# export PATH=$PATH:/usr/local/MATLAB/R2024b/bin
+export PATH=$PATH:~/Programs/matlab/bin
+run_matlab() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: run_matlab <file_path>"
+    return 1
+  fi
+  matlab -nodisplay -nojvm -r "run('$1'); exit;"
+}
+alias run-matlab=run_matlab
+
 # nvm(node/npm)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
