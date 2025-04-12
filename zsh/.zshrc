@@ -36,12 +36,13 @@ zle -N bracketed-paste bracketed-paste-magic
 # My path
 export PATH=$PATH:~/.cargo/bin
 
-# CSE293 fpga until
+# CSE293 + CSE225 fpga until
 export PATH=$PATH:~/Programs/fpga-utils/oss-cad-suite/bin
 export PATH=$PATH:~/Programs/fpga-utils/zachjs-sv2v
 export PATH=$PATH:~/Programs/fpga-utils/verible-v0.0-3946-g851d3ff4/bin
 export PATH=$PATH:~/Programs/fpga-utils/xschem/bin
 export PATH=$PATH:~/Programs/fpga-utils/netgen/bin
+alias dev='devcontainer up --workspace-folder $(git rev-parse --show-toplevel) && devcontainer exec --workspace-folder $(git rev-parse --show-toplevel) /bin/bash -c '\''cd $(git rev-parse --show-prefix)'\'' && /bin/bash'
 
 # Flutter
 export CHROME_EXECUTABLE=$(which brave)
@@ -58,13 +59,13 @@ run_matlab() {
     echo "Usage: run_matlab <file_path>"
     return 1
   fi
-  matlab -nodisplay -nojvm -r "run('$1'); exit;"
+  matlab -nodisplay -r "run('$1'); exit;"
 }
-alias run-matlab=run_matlab
+alias matlab-run=run_matlab
 
 # nvm(node/npm)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-. "$HOME/.local/bin/env"
+# . "$HOME/.local/bin/env"
