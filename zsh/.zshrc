@@ -20,6 +20,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
+export EDITOR=nvim
 alias rcat="command cat"
 alias cat="bat"
 
@@ -42,7 +43,20 @@ export PATH=$PATH:~/Programs/fpga-utils/zachjs-sv2v
 export PATH=$PATH:~/Programs/fpga-utils/verible-v0.0-3946-g851d3ff4/bin
 export PATH=$PATH:~/Programs/fpga-utils/xschem/bin
 export PATH=$PATH:~/Programs/fpga-utils/netgen/bin
-alias dev='devcontainer up --workspace-folder $(git rev-parse --show-toplevel) && devcontainer exec --workspace-folder $(git rev-parse --show-toplevel) /bin/bash -c '\''cd $(git rev-parse --show-prefix)'\'' && /bin/bash'
+
+dev() {
+  local repo_root
+  repo_root=$(git rev-parse --show-toplevel) || return 1
+
+  local rel_path
+  rel_path=$(git rev-parse --show-prefix)
+
+  devcontainer up --workspace-folder "$repo_root" || return 1
+
+  devcontainer exec --workspace-folder "$repo_root" /bin/bash -c "cd '$rel_path' && exec /bin/bash"
+}
+
+
 
 # Flutter
 export CHROME_EXECUTABLE=$(which brave)
@@ -68,4 +82,33 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# . "$HOME/.local/bin/env"
+n ()
+{
+    # Block nesting of nnn in subshells
+    [ "${NNNLVL:-0}" -eq 0 ] || {
+        echo "nnn is already running"
+        return
+    }
+
+    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
+    # see. To cd on quit only on ^G, remove the "export" and make sure not to
+    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
+    #      NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+    # stty start undef
+    # stty stop undef
+    # stty lwrap undef
+    # stty lnext undef
+
+    # The command builtin allows one to alias nnn to n, if desired, without
+    # making an infinitely recursive alias
+    command nnn -e "$@"
+
+    [ ! -f "$NNN_TMPFILE" ] || {
+        . "$NNN_TMPFILE"
+        rm -f -- "$NNN_TMPFILE" > /dev/null
+    }
+}

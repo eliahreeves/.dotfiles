@@ -1,109 +1,125 @@
 // -*- mode: jsonc -*-
 {
-  "spacing": 0, // Gaps between modules (4px)
-  "margin-top": 4,
-  "margin-bottom": 0,
-  "margin-left": 5,
-  "margin-right": 5,
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["idle_inhibitor", "clock"],
-  "modules-right": [
-    "memory",
-    "cpu",
-    "temperature",
-    "bluetooth",
-    "network",
-    "power-profiles-daemon",
-    "battery",
-    "custom/quick-settings",
-  ],
-  "custom/quick-settings": {
-    "format": "󰣇 ",
-    "on-click": "swaync-client -t -sw",
-    "tooltip": false,
-  },
-  "hyprland/workspaces": {
-    "cursor": 60,
-    "disable-scroll": true,
-    "all-outputs": true,
-    "warp-on-scroll": false,
-    "format": "{name}",
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-    },
-  },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": " ",
-      "deactivated": " ",
-    },
-  },
-  "bluetooth": {
-    "format": "<span>󰂯</span>",
-    "format-connected": "<span>󰂱</span>",
-    "on-click": "kitty bluetuith",
-    "tooltip": true,
-    "tooltip-format-connected": "{device_alias}",
-    "tooltip-format-connected-battery": "{device_alias} ({device_battery_percentage}%)",
-    "tooltip-format": "{status}",
-  },
-
-  "clock": {
-    "format": "{:%I:%M %p %m/%d/%Y %A}",
-    "tooltip": false,
-    "on-click": "gnome-calendar", // "ags -t calendar"
-  },
-  "cpu": {
-    "format": " {usage}%",
-    "tooltip": false,
-    "on-click": "kitty btop",
-  },
-  "memory": {
-    "format": "󰘚 {}%",
-    "on-click": "kitty btop",
-  },
-  "temperature": {
-    "critical-threshold": 80,
-    "format": " {temperatureC}°C",
-    "on-click": "kitty btop",
-  },
-  "battery": {
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 15,
-    },
-    "format": "{icon} {capacity}%",
-    "format-charging": "{icon} 󱐋{capacity}%",
-    "format-plugged": "{icon} 󱐋",
-    "format-alt": "{icon}  {time}",
-    // "format-good": "", // An empty format will hide the module
-    "format-icons": ["", "", "", "", ""],
-  },
-  "power-profiles-daemon": {
-    "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
-    "format-icons": {
-      "default": " ",
-      "performance": "󰤇 ",
-      "balanced": " ",
-      "power-saver": " ",
-    },
-  },
-  "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{icon}",
-    "format-ethernet": "{ipaddr}/{cidr}",
-    "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
-    "format-linked": "{ifname} (No IP)",
-    "format-disconnected": " ",
-    "format-icons": {
-      "wifi": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
-    },
-    "on-click": "XDG_CURRENT_DESKTOP=GNOME gnome-control-center wifi",
-  },
+	"spacing": 0, // Gaps between modules (4px)
+	"margin-top": 4,
+	"margin-bottom": 0,
+	"margin-left": 5,
+	"margin-right": 5,
+	"modules-left": [
+		"hyprland/workspaces"
+	],
+	"modules-center": [
+		"idle_inhibitor",
+		"clock"
+	],
+	"modules-right": [
+		"memory",
+		"cpu",
+		"temperature",
+		"bluetooth",
+		"network",
+		"power-profiles-daemon",
+		"battery",
+		"custom/quick-settings",
+	],
+	"custom/quick-settings": {
+		"format": "󰣇 ",
+		"on-click": "swaync-client -t -sw",
+		"tooltip": false,
+	},
+	"hyprland/workspaces": {
+		"cursor": 60,
+		"disable-scroll": true,
+		"all-outputs": true,
+		"warp-on-scroll": false,
+		"format": "{name}",
+		"persistent-workspaces": {
+			"1": [],
+			"2": [],
+			"3": [],
+		},
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": " ",
+			"deactivated": " ",
+		},
+	},
+	"bluetooth": {
+		"format": "<span>󰂯</span>",
+		"format-connected": "<span>󰂱</span>",
+		"on-click": "kitty bluetuith",
+		"tooltip": true,
+		"tooltip-format-connected": "{device_alias}",
+		"tooltip-format-connected-battery": "{device_alias} ({device_battery_percentage}%)",
+		"tooltip-format": "{status}",
+	},
+	"clock": {
+		"format": "{:%I:%M %p %m/%d/%Y %A}",
+		"tooltip": false,
+		"on-click": "gnome-calendar", // "ags -t calendar"
+	},
+	"cpu": {
+		"format": " {usage}%",
+		"tooltip": false,
+		"on-click": "kitty btop",
+	},
+	"memory": {
+		"format": "󰘚 {}%",
+		"on-click": "kitty btop",
+	},
+	"temperature": {
+		"critical-threshold": 80,
+		"format": " {temperatureC}°C",
+		"on-click": "kitty btop",
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15,
+		},
+		"format": "{icon} {capacity}%",
+		"format-charging": "{icon} 󱐋{capacity}%",
+		"format-plugged": "{icon} 󱐋",
+		"format-alt": "{icon}  {time}",
+		// "format-good": "", // An empty format will hide the module
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+	},
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+		"tooltip": true,
+		"format-icons": {
+			"default": " ",
+			"performance": "󰤇 ",
+			"balanced": " ",
+			"power-saver": " ",
+		},
+	},
+	"network": {
+		// "interface": "wlp2*", // (Optional) To force the use of this interface
+		"format-wifi": "{icon}",
+		"format-ethernet": "{ipaddr}/{cidr}",
+		"tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+		"format-linked": "{ifname} (No IP)",
+		"format-disconnected": " ",
+		"format-icons": {
+			"wifi": [
+				"󰤯 ",
+				"󰤟 ",
+				"󰤢 ",
+				"󰤥 ",
+				"󰤨 "
+			],
+		},
+		"on-click": "XDG_CURRENT_DESKTOP=GNOME gnome-control-center wifi",
+	},
 }
