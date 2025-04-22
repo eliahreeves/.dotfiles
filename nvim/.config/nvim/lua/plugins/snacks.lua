@@ -4,6 +4,7 @@ return {
     priority = 1000,
     ---@type snacks.Config
     opts = {
+        scratch = { ft = "python" },
         dashboard = {
             preset = {
                 header = [[
