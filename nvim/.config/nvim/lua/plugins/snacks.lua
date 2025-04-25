@@ -4,7 +4,7 @@ return {
     priority = 1000,
     ---@type snacks.Config
     opts = {
-        -- scratch = { ft = "python" },
+        scratch = { ft = "markdown" },
         dashboard = {
             preset = {
                 header = require("config.header").random_header(),
@@ -81,11 +81,11 @@ return {
             desc = "Seach command history",
         },
         {
-            "<leader>n",
+            "<leader>m",
             function()
                 Snacks.picker.notifications()
             end,
-            desc = "Search notification history",
+            desc = "Search message history",
         },
         -- LazyGit
         {

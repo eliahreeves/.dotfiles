@@ -22,5 +22,8 @@ map("n", "L", ":bnext<CR>", { desc = "Next buffer", noremap = true, silent = tru
 map("n", "H", ":bprevious<CR>", { desc = "Previous buffer", noremap = true, silent = true })
 
 map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { noremap = true, silent = true })
-vim.opt.termguicolors = true
--- vim.opt.laststatus = 0
+
+map({ "i", "n", "s" }, "<esc>", function()
+    vim.cmd("noh")
+    return "<esc>"
+end, { expr = true, desc = "Escape and Clear hlsearch" })

@@ -13,9 +13,8 @@ return {
                 { "<leader>g", group = "git" },
                 { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
                 { "<leader>q", group = "persistance", icon = { icon = " ", color = "yellow" } },
-                { "<leader>P", group = "paste image", icon = { icon = " ", color = "blue" } },
-
-                { "<leader>u", desc = "Toggle multicursor" },
+                { "<leader>u", group = "utility", icon = { icon = "󰖷 " } },
+                { "<leader>uc", desc = "Toggle multicursor" },
                 { "<down>", desc = "Add cursor below" },
                 { "<esc>", desc = "Enable/clear cursors" },
                 { "<leader><down>", desc = "Skip cursor down" },
