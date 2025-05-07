@@ -43,6 +43,7 @@ export PATH=$PATH:~/Programs/fpga-utils/zachjs-sv2v
 export PATH=$PATH:~/Programs/fpga-utils/verible-v0.0-3946-g851d3ff4/bin
 export PATH=$PATH:~/Programs/fpga-utils/xschem/bin
 export PATH=$PATH:~/Programs/fpga-utils/netgen/bin
+export PDK_ROOT=~/.volare
 
 dev() {
   local repo_root

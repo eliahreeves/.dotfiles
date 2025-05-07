@@ -1,7 +1,7 @@
 vim.opt.expandtab = false -- Use tabs instead of spaces
-vim.opt.tabstop = 4 -- Set tab width
-vim.opt.shiftwidth = 4 -- Set indentation width
-vim.opt.softtabstop = 4 -- Make <Tab> and <BS> behave consistently
+vim.opt.tabstop = 2 -- Set tab width
+vim.opt.shiftwidth = 2 -- Set indentation width
+vim.opt.softtabstop = 2 -- Make <Tab> and <BS> behave consistently
 vim.g.mapleader = " "
 vim.opt.swapfile = false
 vim.opt.relativenumber = true
