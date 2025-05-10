@@ -1,46 +1,39 @@
 return {
     "monaqa/dial.nvim",
-    event = "VeryLazy",
-    recommended = true,
-    desc = "Increment and decrement numbers, dates, and more",
-    -- keys = {
-    --     {
-    --         "<C-a>",
-    --         function()
-    --             require("dial.map").manipulate("increment", "normal")
-    --         end,
-    --         expr = true,
-    --         desc = "Increment",
-    --         mode = { "n", "v" },
-    --     },
-    --     {
-    --         "<C-x>",
-    --         function()
-    --             require("dial.map").manipulate("decrement", "normal")
-    --         end,
-    --         expr = true,
-    --         desc = "Decrement",
-    --         mode = { "n", "v" },
-    --     },
-    --     {
-    --         "g<C-a>",
-    --         function()
-    --             require("dial.map").manipulate("increment", "gnormal")
-    --         end,
-    --         expr = true,
-    --         desc = "Increment",
-    --         mode = { "n", "v" },
-    --     },
-    --     {
-    --         "g<C-x>",
-    --         function()
-    --             require("dial.map").manipulate("decrement", "gnormal")
-    --         end,
-    --         expr = true,
-    --         desc = "Decrement",
-    --         mode = { "n", "v" },
-    --     },
-    -- },
+    keys = {
+        {
+            "<C-a>",
+            function()
+                require("dial.map").manipulate("increment", "normal")
+            end,
+            mode = "n",
+            desc = "Dial Increment",
+        },
+        {
+            "<C-x>",
+            function()
+                require("dial.map").manipulate("decrement", "normal")
+            end,
+            mode = "n",
+            desc = "Dial Decrement",
+        },
+        {
+            "g<C-a>",
+            function()
+                require("dial.map").manipulate("increment", "gnormal")
+            end,
+            mode = "n",
+            desc = "Dial Increment (gnormal)",
+        },
+        {
+            "g<C-x>",
+            function()
+                require("dial.map").manipulate("decrement", "gnormal")
+            end,
+            mode = "n",
+            desc = "Dial Decrement (gnormal)",
+        },
+    },
     opts = function()
         local augend = require("dial.augend")
 
@@ -51,8 +44,6 @@ return {
         })
 
         local ordinal_numbers = augend.constant.new({
-            -- elements through which we cycle. When we increment, we go down
-            -- On decrement we go up
             elements = {
                 "first",
                 "second",
@@ -65,10 +56,7 @@ return {
                 "ninth",
                 "tenth",
             },
-            -- if true, it only matches strings with word boundary. firstDate wouldn't work for example
             word = false,
-            -- do we cycle back and forth (tenth to first on increment, first to tenth on decrement).
-            -- Otherwise nothing will happen when there are no further values
             cyclic = true,
         })
 
@@ -106,10 +94,7 @@ return {
         })
 
         local capitalized_boolean = augend.constant.new({
-            elements = {
-                "True",
-                "False",
-            },
+            elements = { "True", "False" },
             word = true,
             cyclic = true,
         })
@@ -131,15 +116,15 @@ return {
             },
             groups = {
                 default = {
-                    augend.integer.alias.decimal, -- nonnegative decimal number (0, 1, 2, 3, ...)
-                    augend.integer.alias.decimal_int, -- nonnegative and negative decimal number
-                    augend.integer.alias.hex, -- nonnegative hex number  (0x01, 0x1a1f, etc.)
-                    augend.date.alias["%Y/%m/%d"], -- date (2022/02/19, etc.)
+                    augend.integer.alias.decimal,
+                    augend.integer.alias.decimal_int,
+                    augend.integer.alias.hex,
+                    augend.date.alias["%Y/%m/%d"],
                     ordinal_numbers,
                     weekdays,
                     months,
                     capitalized_boolean,
-                    augend.constant.alias.bool, -- boolean value (true <-> false)
+                    augend.constant.alias.bool,
                     logical_alias,
                 },
                 vue = {
@@ -151,12 +136,8 @@ return {
                     augend.constant.new({ elements = { "let", "const" } }),
                 },
                 css = {
-                    augend.hexcolor.new({
-                        case = "lower",
-                    }),
-                    augend.hexcolor.new({
-                        case = "upper",
-                    }),
+                    augend.hexcolor.new({ case = "lower" }),
+                    augend.hexcolor.new({ case = "upper" }),
                 },
                 markdown = {
                     augend.constant.new({
@@ -167,13 +148,13 @@ return {
                     augend.misc.alias.markdown_header,
                 },
                 json = {
-                    augend.semver.alias.semver, -- versioning (v1.1.2)
+                    augend.semver.alias.semver,
                 },
                 lua = {
                     augend.constant.new({
                         elements = { "and", "or" },
-                        word = true, -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
-                        cyclic = true, -- "or" is incremented into "and".
+                        word = true,
+                        cyclic = true,
                     }),
                 },
                 python = {
@@ -185,19 +166,7 @@ return {
         }
     end,
     config = function(_, opts)
-        vim.keymap.set("n", "<C-a>", function()
-            require("dial.map").manipulate("increment", "normal")
-        end)
-        vim.keymap.set("n", "<C-x>", function()
-            require("dial.map").manipulate("decrement", "normal")
-        end)
-        vim.keymap.set("n", "g<C-a>", function()
-            require("dial.map").manipulate("increment", "gnormal")
-        end)
-        vim.keymap.set("n", "g<C-x>", function()
-            require("dial.map").manipulate("decrement", "gnormal")
-        end)
-        -- copy defaults to each group
+        -- Extend other groups with default
         for name, group in pairs(opts.groups) do
             if name ~= "default" then
                 vim.list_extend(group, opts.groups.default)

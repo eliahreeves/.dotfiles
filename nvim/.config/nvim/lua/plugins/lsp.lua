@@ -1,21 +1,21 @@
 return {
     {
         "mason-org/mason.nvim",
-        lazy = false,
         config = function()
             require("mason").setup()
         end,
     },
     {
         "mason-org/mason-lspconfig.nvim",
-        lazy = false,
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = { "mason-org/mason.nvim" },
         config = function()
             require("mason-lspconfig").setup()
         end,
     },
     {
         "neovim/nvim-lspconfig",
-        lazy = false,
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "hover" })
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
