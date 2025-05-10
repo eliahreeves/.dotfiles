@@ -22,6 +22,7 @@ return {
                 { "<leader>N", desc = "Add cursor at previous match" },
                 { "<leader>S", desc = "Skip previous match" },
                 { "<leader>n", desc = "Add cursor at next match" },
+                { "<leader>w", desc = "window", icon = { icon = " " } },
                 { "<leader>s", desc = "Skip next match" },
                 { "<leader>x", desc = "Delete current cursor" },
                 { "<left>", desc = "Select previous cursor" },

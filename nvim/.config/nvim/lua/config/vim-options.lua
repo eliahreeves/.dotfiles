@@ -13,6 +13,12 @@ vim.opt.fillchars:append({ eob = " " })
 
 local map = vim.keymap.set
 
+-- Colorscheme
+local last = vim.fn.stdpath("config") .. "/last_colorscheme.vim"
+if vim.fn.filereadable(last) == 1 then
+    vim.cmd("source " .. last)
+end
+
 map("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer", noremap = true, silent = true })
 map("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Close other buffers", noremap = true, silent = true })
 map("n", "<leader>bb", "<C-^>", { desc = "Previous buffer", noremap = true, silent = true })
@@ -20,6 +26,13 @@ map("n", "<leader>bl", ":bnext<CR>", { desc = "Next buffer", noremap = true, sil
 map("n", "<leader>bh", ":bprevious<CR>", { desc = "Previous buffer", noremap = true, silent = true })
 map("n", "L", ":bnext<CR>", { desc = "Next buffer", noremap = true, silent = true })
 map("n", "H", ":bprevious<CR>", { desc = "Previous buffer", noremap = true, silent = true })
+
+-- window stuff
+map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
+map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+map("n", "<leader>wh", "<C-W>h", { desc = "Window Left", remap = true })
+map("n", "<leader>wl", "<C-W>l", { desc = "Window Right", remap = true })
 
 map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { noremap = true, silent = true })
 
