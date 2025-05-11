@@ -28,11 +28,14 @@ map("n", "L", ":bnext<CR>", { desc = "Next buffer", noremap = true, silent = tru
 map("n", "H", ":bprevious<CR>", { desc = "Previous buffer", noremap = true, silent = true })
 
 -- window stuff
-map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+map("n", "<leader>ws", "<C-W>s", { desc = "Split Window Below", remap = true })
+map("n", "<leader>wv", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 map("n", "<leader>wh", "<C-W>h", { desc = "Window Left", remap = true })
 map("n", "<leader>wl", "<C-W>l", { desc = "Window Right", remap = true })
+map("n", "<leader>wj", "<C-W>j", { desc = "Window Down", remap = true })
+map("n", "<leader>wk", "<C-W>k", { desc = "Window Up", remap = true })
+map("n", "<leader>ww", "<C-W>w", { desc = "Window Next", remap = true })
 
 map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { noremap = true, silent = true })
 

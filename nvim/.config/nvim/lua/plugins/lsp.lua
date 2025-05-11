@@ -38,4 +38,29 @@ return {
             })
         end,
     },
+    {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("mason-tool-installer").setup({
+
+                -- a list of all tools you want to ensure are installed upon
+                -- start
+                ensure_installed = {
+
+                    "bash-language-server",
+                    "svlangserver",
+                    "lua-language-server",
+                    "stylua",
+                    "shellcheck",
+                    "shfmt",
+                    "pyright",
+                    "json-lsp",
+                },
+                auto_update = true,
+                run_on_start = true,
+                start_delay = 3000, -- 3 second delay
+            })
+        end,
+    },
 }
