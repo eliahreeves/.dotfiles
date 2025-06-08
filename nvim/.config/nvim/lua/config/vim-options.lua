@@ -8,6 +8,7 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.cmdheight = 0
 vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
+vim.o.termguicolors = true
 
 vim.opt.fillchars:append({ eob = " " })
 
