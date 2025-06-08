@@ -1,6 +1,5 @@
 return {
     "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    -- install jsregexp (optional!).
+    event = { "BufReadPre", "BufNewFile" },
     build = "make install_jsregexp",
 }

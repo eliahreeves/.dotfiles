@@ -59,6 +59,11 @@ window#Runner {
       label.description {
         color: gtkalpha($fg-color, 0.8);
       }
+
+      label.tag-label {
+        // margin-left: auto;
+
+      }
       &:hover {
         background: $container-hover;
       }

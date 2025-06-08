@@ -1,13 +1,15 @@
 return {
     {
         "mason-org/mason.nvim",
+        lazy = false,
         config = function()
             require("mason").setup()
         end,
     },
     {
         "mason-org/mason-lspconfig.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        lazy = false,
+        -- event = { "BufReadPre", "BufNewFile" },
         dependencies = { "mason-org/mason.nvim" },
         config = function()
             require("mason-lspconfig").setup()
@@ -15,7 +17,8 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
-        event = { "BufReadPre", "BufNewFile" },
+        -- event = { "BufReadPre", "BufNewFile" },
+        lazy = false,
         config = function()
             vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "hover" })
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
@@ -40,7 +43,8 @@ return {
     },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        -- event = { "BufReadPre", "BufNewFile" },
+        lazy = false,
         config = function()
             require("mason-tool-installer").setup({
 
@@ -49,13 +53,15 @@ return {
                 ensure_installed = {
 
                     "bash-language-server",
-                    "svlangserver",
+                    -- "svlangserver",
                     "lua-language-server",
                     "stylua",
                     "shellcheck",
                     "shfmt",
                     "pyright",
                     "json-lsp",
+                    "clangd",
+                    "typescript-language-server",
                 },
                 auto_update = true,
                 run_on_start = true,

@@ -17,28 +17,33 @@ function hide() {
 	App.get_window("Runner")!.hide();
 }
 
-function AppButton({ app }: { app: Item }) {
+function AppButton({ app, tag }: { app: Item, tag: string }) {
 	return (
 		<button
+			hexpand
 			className="AppButton"
 			onClicked={() => {
 				hide();
 				app.launch();
 			}}
 		>
-			<box>
-				<icon icon={app.iconName ?? "applications-system"} />
-				<box valign={Gtk.Align.CENTER} vertical>
-					<label className="name" truncate xalign={0} label={app.name} />
-					{app.description && (
-						<label
-							className="description"
-							wrap
-							xalign={0}
-							label={app.description}
-						/>
-					)}
+			<box halign={Gtk.Align.FILL} hexpand>
+				<box>
+					<icon icon={app.iconName ?? "applications-system"} />
+					<box valign={Gtk.Align.CENTER} vertical>
+						<label className="name" truncate xalign={0} label={app.name} />
+						{app.description ? (
+							<label
+								className="description"
+								wrap
+								xalign={0}
+								label={app.description}
+							/>
+						) : <></>}
+					</box>
 				</box>
+				<box hexpand />
+				<label className="tag-label" label={tag} halign={Gtk.Align.END} />
 			</box>
 		</button>
 	);
@@ -124,7 +129,7 @@ function buildList(
 				exec([
 					"systemd-run",
 					"--user",
-					"brave",
+					"xdg-open",
 					`https://www.google.com/search?q=${encodeURIComponent(search)}`,
 				]);
 			},
@@ -132,6 +137,11 @@ function buildList(
 			iconName: "system-search",
 		},
 	];
+}
+
+function indexToChar(index: number): string {
+	const list: string[] = ['q', 'w', 'e', 'r', 't', 'a', 's', 'd'];
+	return list[index] ?? '';
 }
 
 export default function Runner(): Gtk.Widget {
@@ -169,9 +179,39 @@ export default function Runner(): Gtk.Widget {
 				// });
 				width.set(self.get_current_monitor().workarea.width);
 			}}
-			onKeyPressEvent={function (self, event: Gdk.Event) {
-				if (event.get_keyval()[1] === Gdk.KEY_Escape) {
+			onKeyPressEvent={function(self, event: Gdk.Event) {
+				const [, keyval] = event.get_keyval();
+				const [, state] = event.get_state();
+				const controlPressed = (state & Gdk.ModifierType.CONTROL_MASK) !== 0;
+				if (keyval === Gdk.KEY_Escape) {
 					self.hide();
+				}
+				if (controlPressed) {
+					if (keyval === Gdk.KEY_q) {
+						list.get()[0]?.launch();
+						hide();
+					} else if (keyval === Gdk.KEY_w) {
+						list.get()[1]?.launch();
+						hide();
+					} else if (keyval === Gdk.KEY_e) {
+						list.get()[2]?.launch();
+						hide();
+					} else if (keyval === Gdk.KEY_r) {
+						list.get()[3]?.launch();
+						hide();
+					} else if (keyval === Gdk.KEY_t) {
+						list.get()[4]?.launch();
+						hide();
+					} else if (keyval === Gdk.KEY_a) {
+						list.get()[5]?.launch();
+						hide();
+					} else if (keyval === Gdk.KEY_s) {
+						list.get()[6]?.launch();
+						hide();
+					} else if (keyval === Gdk.KEY_d) {
+						list.get()[7]?.launch();
+						hide();
+					}
 				}
 			}}
 		>
@@ -191,7 +231,7 @@ export default function Runner(): Gtk.Widget {
 							/>
 						</box>
 						<box spacing={6} vertical>
-							{list((list) => list.map((app) => <AppButton app={app} />))}
+							{list((list) => list.map((app, index) => <AppButton app={app} tag={indexToChar(index)} />))}
 						</box>
 						<box
 							halign={CENTER}

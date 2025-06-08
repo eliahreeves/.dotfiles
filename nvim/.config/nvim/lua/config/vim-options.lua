@@ -30,7 +30,8 @@ map("n", "H", ":bprevious<CR>", { desc = "Previous buffer", noremap = true, sile
 -- window stuff
 map("n", "<leader>ws", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>wv", "<C-W>v", { desc = "Split Window Right", remap = true })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+map("n", "<leader>wq", "<C-W>q", { desc = "Close Window", remap = true })
+map("n", "<leader>wq", "<C-W>o", { desc = "Close Other Windows", remap = true })
 map("n", "<leader>wh", "<C-W>h", { desc = "Window Left", remap = true })
 map("n", "<leader>wl", "<C-W>l", { desc = "Window Right", remap = true })
 map("n", "<leader>wj", "<C-W>j", { desc = "Window Down", remap = true })
