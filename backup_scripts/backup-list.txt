@@ -1,0 +1,5 @@
+$HOME/Documents => Documents
+$HOME/repos/secrets => repos/secrets
+$HOME/Pictures => Pictures
+$HOME/.ssh => .ssh
+$HOME/.gnupg => .gnupg
