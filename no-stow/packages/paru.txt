@@ -1,0 +1,5 @@
+aylurs-gtk-shell-git
+visual-studio-code-bin
+wlogout
+zen-browser-bin
+brave-bin

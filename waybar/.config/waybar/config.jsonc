@@ -49,7 +49,7 @@
 	"bluetooth": {
 		"format": "<span>󰂯</span>",
 		"format-connected": "<span>󰂱</span>",
-		"on-click": "kitty bluetuith",
+		"on-click": "/usr/bin/blueberry",
 		"tooltip": true,
 		"tooltip-format-connected": "{device_alias}",
 		"tooltip-format-connected-battery": "{device_alias} ({device_battery_percentage}%)",

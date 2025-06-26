@@ -3,3 +3,5 @@ $HOME/repos/secrets => repos/secrets
 $HOME/Pictures => Pictures
 $HOME/.ssh => .ssh
 $HOME/.gnupg => .gnupg
+$HOME/.dotfiles => .dotfiles
+$HOME/.minecraft => .minecraft
