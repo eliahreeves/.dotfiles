@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BACKUP_DIR="/run/media/erreeves/eli-files/computer"
+BACKUP_DIR="/run/media/erreeves/Backup/computer"
 BACKUP_LIST="backup-list.txt"
 DRY_RUN=false
 

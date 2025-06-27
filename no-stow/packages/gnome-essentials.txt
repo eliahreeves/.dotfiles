@@ -1,0 +1,5 @@
+nautilus
+loupe
+gnome-disk-utility
+evince
+seahorse
