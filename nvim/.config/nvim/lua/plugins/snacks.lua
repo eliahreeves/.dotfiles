@@ -39,16 +39,6 @@ return {
     },
 
     keys = {
-        -- Expolore
-        {
-            "<leader>e",
-            function()
-                local file = vim.api.nvim_buf_get_name(0)
-                local dir = vim.fn.fnamemodify(file, ":p:h")
-                Snacks.explorer({ cwd = dir })
-            end,
-            desc = "snacks explorer",
-        },
         -- Scratch
         {
             "<leader>.",

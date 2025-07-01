@@ -9,6 +9,8 @@ vim.opt.number = true
 vim.opt.cmdheight = 0
 vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 vim.o.termguicolors = true
+vim.opt.ignorecase = true -- make search case-insensitive
+vim.opt.smartcase = true -- but make it case-sensitive if uppercase letters are used
 
 vim.opt.fillchars:append({ eob = " " })
 
