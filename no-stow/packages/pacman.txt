@@ -1,4 +1,7 @@
 wget
+zip
+xz
+unzip
 exfatprogs
 dosfstools
 usbutils

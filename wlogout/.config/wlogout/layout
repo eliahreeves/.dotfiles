@@ -23,8 +23,14 @@
     "keybind" : "4"
 }
 {
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspend (5)",
+    "keybind" : "5"
+}
+{
     "label" : "logout",
     "action" : "hyprctl dispatch exit",
-    "text" : "Exit (5)",
-    "keybind" : "5"
+    "text" : "Exit (6)",
+    "keybind" : "6"
 }

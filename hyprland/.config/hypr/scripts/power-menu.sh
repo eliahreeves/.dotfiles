@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if pgrep -x "wlogout" > /dev/null; then
-    pkill -x "wlogout"
+if pgrep -x "wlogout" >/dev/null; then
+	pkill -x "wlogout"
 else
-    wlogout -b 5
+	ROWS=$(grep -c "{" "$HOME/.config/wlogout/layout")
+	wlogout -b "$ROWS"
 fi
-

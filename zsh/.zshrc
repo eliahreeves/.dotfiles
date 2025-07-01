@@ -1,4 +1,4 @@
-if [ "$TMUX" = "" ] && [ "$TERM_PROGRAM" != "vscode" ]; then ~/.dotfiles/no-stow/scripts/tmux-start.sh; fi
+if [ "$TMUX" = "" ] && [ "$TERM_PROGRAM" != "vscode" ]; then tmux attach -t main || tmux new -s main; fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -62,7 +62,7 @@ export PATH=$PATH:~/.cargo/bin
 
 
 # Flutter
-export CHROME_EXECUTABLE=$(which google-chrome-stable)
+export CHROME_EXECUTABLE=$(which brave)
 export PATH=$PATH:~/Programs/flutter/bin
 
 # ESP32
@@ -84,37 +84,6 @@ export PATH=$PATH:~/Programs/flutter/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#
-# n ()
-# {
-#     # Block nesting of nnn in subshells
-#     [ "${NNNLVL:-0}" -eq 0 ] || {
-#         echo "nnn is already running"
-#         return
-#     }
-#
-#     # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
-#     # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
-#     # see. To cd on quit only on ^G, remove the "export" and make sure not to
-#     # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
-#     #      NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-#     export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-#
-#     # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-#     # stty start undef
-#     # stty stop undef
-#     # stty lwrap undef
-#     # stty lnext undef
-#
-#     # The command builtin allows one to alias nnn to n, if desired, without
-#     # making an infinitely recursive alias
-#     command nnn -e "$@"
-#
-#     [ ! -f "$NNN_TMPFILE" ] || {
-#         . "$NNN_TMPFILE"
-#         rm -f -- "$NNN_TMPFILE" > /dev/null
-#     }
-# }
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/erreeves/Programs/gsutil/path.zsh.inc' ]; then . '/home/erreeves/Programs/gsutil/path.zsh.inc'; fi

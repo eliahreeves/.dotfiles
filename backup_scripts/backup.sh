@@ -1,24 +1,26 @@
 #!/bin/bash
-BACKUP_DIR="/run/media/erreeves/Backup/computer"
-EXCLUDE_FILE="backup-exclude.txt"
-mkdir -p "$BACKUP_DIR"
-
-while read -r line; do
-	# Skip empty lines and comments
-	[[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
-
-	# Split on '=>' and trim whitespace
-	src=$(echo "$line" | cut -d'=' -f1 | xargs)
-	dst=$(echo "$line" | cut -d'>' -f2 | xargs)
-	src=$(eval echo "$src")
-
-	echo "Backing up $src to $BACKUP_DIR/$dst"
-	mkdir -p "$BACKUP_DIR/$dst"
-
-	# Use exclude file if it exists
-	if [[ -f "$EXCLUDE_FILE" ]]; then
-		rsync -a --delete --exclude-from="$EXCLUDE_FILE" "$src/" "$BACKUP_DIR/$dst/"
+MOUNT_POINT="/run/media/erreeves/Backup"
+BACKUP_DIR="$MOUNT_POINT/computer"
+backup() {
+	mkdir -p "$BACKUP_DIR/$2"
+	if [ -n "$3" ]; then
+		echo "Backing up $1 to $BACKUP_DIR/$2 excluding $3"
+		rsync -a --delete --exclude="$3" "$1" "$BACKUP_DIR/$2"
 	else
-		rsync -a --delete "$src/" "$BACKUP_DIR/$dst/"
+		echo "Backing up $1 to $BACKUP_DIR/$2"
+		rsync -a --delete "$1" "$BACKUP_DIR/$2"
 	fi
-done <backup-list.txt
+
+}
+if ! mountpoint -q $MOUNT_POINT; then
+	echo "Backup drive not mounted. Exiting."
+	exit 1
+fi
+backup "$HOME/Documents/" Documents
+backup "$HOME/repos/secrets/" repos/secrets
+backup "$HOME/Pictures/" Pictures "Screenshots"
+backup "$HOME/.dotfiles/" .dotfiles
+backup "$HOME/.minecraft/" .minecraft
+backup "$HOME/.ssh/" .ssh
+backup "$HOME/.gnupg/" .gnupg
+sudo bash -c "$(declare -f backup); backup /srv/fabric/ root/srv/fabric"

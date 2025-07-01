@@ -1,0 +1,10 @@
+[user]
+	name = Eliah Reeves
+	email = ereeclimb@gmail.com
+	signingkey = 4EAA83A5DEB15261
+[pull]
+	rebase = false
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true

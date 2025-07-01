@@ -1,4 +1,5 @@
 $HOME/Documents => Documents
+/srv/fabric => root/srv/fabric
 $HOME/repos/secrets => repos/secrets
 $HOME/Pictures => Pictures
 $HOME/.minecraft => .minecraft
