@@ -1,4 +1,3 @@
-aylurs-gtk-shell-git
 swayosd-git
 visual-studio-code-bin
 wlogout

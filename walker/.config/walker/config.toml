@@ -12,7 +12,7 @@ force_keyboard_focus = false
 
 [keys]
 accept_typeahead = ["tab"]
-trigger_labels = "lalt"
+trigger_labels = "lctrl"
 next = ["down"]
 prev = ["up"]
 close = ["esc"]
@@ -53,7 +53,7 @@ delay = 0
 resume_last_query = false
 
 [activation_mode]
-labels = "jkl;asdf"
+labels = "qwertyui"
 
 [builtins.applications]
 weight = 5
@@ -108,12 +108,13 @@ label = "General Assistant"
 prompt = "You are a helpful general assistant. Keep your answers short and precise."
 
 [builtins.calc]
+prefix = "="
 require_number = true
 weight = 5
 name = "calc"
 icon = "accessories-calculator"
 placeholder = "Calculator"
-min_chars = 4
+min_chars = 1
 
 [builtins.windows]
 weight = 5
@@ -166,6 +167,7 @@ history = true
 typeahead = true
 
 [builtins.finder]
+prefix = "/"
 use_fd = false
 weight = 5
 icon = "file"
@@ -203,7 +205,7 @@ refresh = true
 weight = 5
 name = "switcher"
 placeholder = "Switcher"
-prefix = "/"
+prefix = "@"
 
 [builtins.websearch]
 keep_selection = true

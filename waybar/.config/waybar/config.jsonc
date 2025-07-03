@@ -19,6 +19,7 @@
 		"bluetooth",
 		"network",
 		"power-profiles-daemon",
+		"custom/bluelight",
 		"battery",
 		"custom/quick-settings",
 	],
@@ -26,6 +27,12 @@
 		"format": "󰣇 ",
 		"on-click": "swaync-client -t -sw",
 		"tooltip": false,
+	},
+	"custom/bluelight": {
+		// "format": "H",
+		"exec": "~/.config/waybar/scripts/bluelight_toggle.sh",
+		"on-click": "~/.config/waybar/scripts/bluelight_toggle_action.sh",
+		"signal": 10,
 	},
 	"hyprland/workspaces": {
 		"cursor": 60,
