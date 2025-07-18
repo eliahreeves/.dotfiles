@@ -4,7 +4,7 @@ STATUS_FILE="/tmp/bluelight.status"
 
 if [ -f "$STATUS_FILE" ] && [ "$(cat $STATUS_FILE)" == " " ]; then
 	# turn it off
-	hyprctl hyprsunset temperature identity >/dev/null
+	hyprctl hyprsunset identity >/dev/null
 	echo " " >"$STATUS_FILE"
 else
 	# turn it on

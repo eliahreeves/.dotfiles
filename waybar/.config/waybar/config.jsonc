@@ -70,16 +70,16 @@
 	"cpu": {
 		"format": " {usage}%",
 		"tooltip": false,
-		"on-click": "kitty btop",
+		"on-click": "ghostty -e btop",
 	},
 	"memory": {
 		"format": "󰘚 {}%",
-		"on-click": "kitty btop",
+		"on-click": "ghostty -e btop",
 	},
 	"temperature": {
 		"critical-threshold": 80,
 		"format": " {temperatureC}°C",
-		"on-click": "kitty btop",
+		"on-click": "ghostty -e btop",
 	},
 	"battery": {
 		"states": {

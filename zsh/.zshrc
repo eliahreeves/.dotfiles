@@ -1,10 +1,13 @@
-if [ "$TMUX" = "" ] && [ "$TERM_PROGRAM" != "vscode" ]; then tmux attach -t main || tmux new -s main; fi
+if [ -z "$ZELLIJ" ] && [ "$TERM_PROGRAM" != "vscode" ]; then zellij; fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+export PAGER="nvim Man\!"
+export EDITOR="nvim"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -23,6 +26,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 export EDITOR=nvim
 alias rcat="command cat"
 alias cat="bat"
+alias zj="zellij"
 
 
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
@@ -36,7 +40,6 @@ zle -N bracketed-paste bracketed-paste-magic
 
 # My path
 export PATH=$PATH:~/.cargo/bin
-
 # CSE293 + CSE225 fpga until
 # export PATH=$PATH:~/Programs/fpga-utils/oss-cad-suite/bin
 # export PATH=$PATH:~/Programs/fpga-utils/zachjs-sv2v
@@ -90,3 +93,5 @@ if [ -f '/home/erreeves/Programs/gsutil/path.zsh.inc' ]; then . '/home/erreeves/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/erreeves/Programs/gsutil/completion.zsh.inc' ]; then . '/home/erreeves/Programs/gsutil/completion.zsh.inc'; fi
+
+eval "$(zoxide init zsh)"
