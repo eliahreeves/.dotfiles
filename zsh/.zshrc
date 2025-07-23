@@ -1,4 +1,4 @@
-if [ -z "$ZELLIJ" ] && [ "$TERM_PROGRAM" != "vscode" ]; then zellij; fi
+if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then tmux attach -t main || tmux new -s main; fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PAGER="nvim Man\!"
+export PAGER="nvim +Man\!"
 export EDITOR="nvim"
 
 # If you come from bash you might have to change your $PATH.
@@ -23,10 +23,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
-export EDITOR=nvim
 alias rcat="command cat"
 alias cat="bat"
-alias zj="zellij"
+
+alias android="QT_QPA_PLATFORM=xcb nohup ~/Programs/Android/Sdk/emulator/emulator -avd Pixel_9_Pro_XL >/dev/null 2>&1 &"
 
 
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
@@ -67,6 +67,8 @@ export PATH=$PATH:~/.cargo/bin
 # Flutter
 export CHROME_EXECUTABLE=$(which brave)
 export PATH=$PATH:~/Programs/flutter/bin
+export PATH=$PATH:~/Programs/Android/Sdk/platform-tools
+
 
 # ESP32
 # alias idf-activate="source ~/Programs/esp/esp-idf/export.sh"

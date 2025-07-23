@@ -4,6 +4,7 @@ font-style = SemiBold
 font-style-bold = ExtraBold
 font-style-italic = SemiBold Italic
 font-style-bold-italic = ExtraBold Italic
+font-size = 13
 theme = Kanagawa Dragon
 background = 000000
 keybind = performable:ctrl+c=copy_to_clipboard

@@ -28,7 +28,7 @@ ripgrep
 rsync
 stow
 swaync
-zellij
+tmux
 waybar
 wl-clipboard
 zsh
