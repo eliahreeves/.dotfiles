@@ -1,4 +1,5 @@
-#! /bin/bash
+#!/usr/bin/env bash
+
 mkdir -p ~/Pictures/Screenshots
 SCREENSHOT_FILE_NAME="screenshot-$(date +%F_%T).png"
 SCREENSHOT_PATH="$HOME/Pictures/Screenshots/$SCREENSHOT_FILE_NAME"

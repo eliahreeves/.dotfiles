@@ -1,3 +1,11 @@
+
+if vim.env.NIX_NEOVIM then
+	require("nvim-treesitter.configs").setup({
+  ensure_installed = {},
+  auto_install = false,
+})
+return {}
+else
 return {
     {
         "nvim-treesitter/nvim-treesitter",
@@ -65,3 +73,4 @@ return {
         },
     },
 }
+end

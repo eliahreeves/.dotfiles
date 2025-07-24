@@ -1,5 +1,5 @@
-#!/bin/bash
-MOUNT_POINT="/run/media/erreeves/Backup"
+#!/usr/bin/env bash
+MOUNT_POINT="/mnt"
 BACKUP_DIR="$MOUNT_POINT/computer"
 LOG_FILE="$BACKUP_DIR/backup.log"
 
