@@ -11,6 +11,7 @@ vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 vim.o.termguicolors = true
 vim.opt.ignorecase = true -- make search case-insensitive
 vim.opt.smartcase = true -- but make it case-sensitive if uppercase letters are used
+vim.opt.timeoutlen = 100
 
 vim.opt.fillchars:append({ eob = " " })
 
