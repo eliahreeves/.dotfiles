@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 BATTERY_PERCENT=$(cat /sys/class/power_supply/BAT0/capacity)
 ON_AC_POWER=$(cat /sys/class/power_supply/BAT0/status)
 

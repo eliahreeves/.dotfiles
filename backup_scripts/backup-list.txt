@@ -1,8 +1,0 @@
-$HOME/Documents => Documents
-/srv/fabric => root/srv/fabric
-$HOME/repos/secrets => repos/secrets
-$HOME/Pictures => Pictures
-$HOME/.minecraft => .minecraft
-$HOME/.ssh => .ssh
-$HOME/.gnupg => .gnupg
-$HOME/.dotfiles => .dotfiles

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ "$(cat /sys/class/power_supply/ADP1/online)" == "1" ]]; then
 	brightnessctl --save
