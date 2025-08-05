@@ -1,27 +1,3 @@
------ start zellij -----
--- https://github.com/fresh2dev/zellij-autolock/issues/11#issuecomment-2575922784
--- local function zellij(mode)
---     vim.schedule(function()
---         if vim.env.ZELLIJ ~= nil then
---             vim.fn.system({ "zellij", "action", "switch-mode", mode })
---         end
---     end)
--- end
---
--- vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
---     callback = function()
---         zellij("locked")
---     end,
--- })
---
--- vim.api.nvim_create_autocmd({ "FocusLost", "VimLeave" }, {
---     callback = function()
---         zellij("normal")
---     end,
--- })
-
------ end zellij -----
-
 -- better c indent
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "c", "cpp", "h" },

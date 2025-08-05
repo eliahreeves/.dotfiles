@@ -124,6 +124,27 @@ return {
             end,
             desc = "Search message history",
         },
+        {
+            "<leader>xx",
+            function()
+                Snacks.picker.diagnostics()
+            end,
+            desc = "Search diagnostics",
+        },
+        {
+            "<leader>xX",
+            function()
+                Snacks.picker.diagnostics_buffer()
+            end,
+            desc = "Search diagnostics (buffer)",
+        },
+        {
+            "<leader>ca",
+            function()
+                Snacks.picker.qflist()
+            end,
+            desc = "Quick fix",
+        },
         -- LazyGit
         {
             "<leader>gg",

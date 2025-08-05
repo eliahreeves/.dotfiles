@@ -10,7 +10,6 @@ if vim.env.NIX_NEOVIM then
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "go to implementation" })
                 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "rename" })
-                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "code actions" })
                 vim.diagnostic.config({
                     signs = false,
                     virtual_text = {
@@ -57,7 +56,6 @@ else
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "go to implementation" })
                 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "rename" })
-                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "code actions" })
                 vim.diagnostic.config({
                     signs = false,
                     virtual_text = {

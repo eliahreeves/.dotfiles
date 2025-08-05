@@ -11,8 +11,6 @@ vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 vim.o.termguicolors = true
 vim.opt.ignorecase = true -- make search case-insensitive
 vim.opt.smartcase = true -- but make it case-sensitive if uppercase letters are used
-vim.opt.timeoutlen = 100
-
 vim.opt.fillchars:append({ eob = " " })
 
 local map = vim.keymap.set
@@ -23,6 +21,7 @@ if vim.fn.filereadable(last) == 1 then
     vim.cmd("source " .. last)
 end
 
+-- buffer stuff
 map("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer", noremap = true, silent = true })
 map("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Close other buffers", noremap = true, silent = true })
 map("n", "<leader>bb", "<C-^>", { desc = "Previous buffer", noremap = true, silent = true })
@@ -42,6 +41,7 @@ map("n", "<leader>wj", "<C-W>j", { desc = "Window Down", remap = true })
 map("n", "<leader>wk", "<C-W>k", { desc = "Window Up", remap = true })
 map("n", "<leader>ww", "<C-W>w", { desc = "Window Next", remap = true })
 
+-- ctrl+s save
 map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { noremap = true, silent = true })
 
 map({ "i", "n", "s" }, "<esc>", function()
