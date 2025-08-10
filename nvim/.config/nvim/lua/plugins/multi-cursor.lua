@@ -35,6 +35,18 @@ return {
         set("n", "<C-LeftRelease>", mc.handleMouseRelease)
 
         set({ "n", "x" }, "<Leader>uc", mc.toggleCursor)
+        mc.addKeymapLayer(function(layerSet)
+            layerSet({ "n", "x" }, "<Left>", mc.prevCursor)
+            layerSet({ "n", "x" }, "<Right>", mc.nextCursor)
+            layerSet({ "n", "x" }, "<Leader>x", mc.deleteCursor)
+            layerSet("n", "<Esc>", function()
+                if not mc.cursorsEnabled() then
+                    mc.enableCursors()
+                else
+                    mc.clearCursors()
+                end
+            end)
+        end)
 
         local hl = vim.api.nvim_set_hl
         hl(0, "MultiCursorCursor", { reverse = true })

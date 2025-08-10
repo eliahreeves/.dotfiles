@@ -142,7 +142,7 @@ label:focus {
   background-color: #000000;
 }
 
-#idle_inhibitor {
+#custom-no-sleep {
   border-radius: 10px;
   padding-top: 0;
   padding-right: 13px;
@@ -151,6 +151,15 @@ label:focus {
   margin-right: 5px;
   background-color: rgba(24, 22, 22, 1);
 }
+/* #idle_inhibitor { */
+/*   border-radius: 10px; */
+/*   padding-top: 0; */
+/*   padding-right: 13px; */
+/*   padding-bottom: 0; */
+/*   padding-left: 15px; */
+/*   margin-right: 5px; */
+/*   background-color: rgba(24, 22, 22, 1); */
+/* } */
 
 #idle_inhibitor.activated {
   background-color: #232425;

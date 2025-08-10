@@ -9,7 +9,7 @@
 		"hyprland/workspaces"
 	],
 	"modules-center": [
-		"idle_inhibitor",
+		"custom/no-sleep",
 		"clock"
 	],
 	"modules-right": [
@@ -33,6 +33,12 @@
 		"exec": "~/.config/waybar/scripts/bluelight_toggle.sh",
 		"on-click": "~/.config/waybar/scripts/bluelight_toggle_action.sh",
 		"signal": 10,
+	},
+	"custom/no-sleep": {
+		// "format": "H",
+		"exec": "~/.config/waybar/scripts/no-sleep-toggle.sh",
+		"on-click": "~/.config/waybar/scripts/no-sleep-toggle-action.sh",
+		"signal": 11,
 	},
 	"hyprland/workspaces": {
 		"cursor": 60,
