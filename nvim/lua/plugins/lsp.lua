@@ -28,6 +28,7 @@ if vim.env.NIX_NEOVIM then
                 lspconfig.lua_ls.setup({})
                 lspconfig.bashls.setup({})
                 lspconfig.nixd.setup({})
+                lspconfig.gopls.setup({})
             end,
         },
     }

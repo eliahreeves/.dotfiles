@@ -20,6 +20,7 @@ return {
             lua = { "stylua" },
             nix = { "alejandra" },
             bash = { "shfmt" },
+            go = { "gofumpt" },
         },
         default_format_opts = {
             lsp_format = "fallback",
