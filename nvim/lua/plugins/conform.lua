@@ -21,6 +21,11 @@ return {
             nix = { "alejandra" },
             bash = { "shfmt" },
             go = { "gofumpt" },
+            python = { "ruff" },
+            javascript = { "eslint" },
+            javascriptreact = { "eslint" },
+            typescript = { "eslint" },
+            typescriptreact = { "eslint" },
         },
         default_format_opts = {
             lsp_format = "fallback",
@@ -35,6 +40,7 @@ return {
                 prepend_args = { "-i", "2" },
             },
             stylua = { prepend_args = { "--indent-type", "Spaces" } },
+            ruff = { prepend_args = { "format" } },
         },
     },
     init = function()

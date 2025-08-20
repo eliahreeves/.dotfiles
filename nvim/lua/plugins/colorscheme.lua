@@ -5,4 +5,5 @@ return {
     { "vague2k/vague.nvim" },
     { "catppuccin/nvim", name = "catppuccin" },
     { "askfiy/visual_studio_code" },
+    { "wnkz/monoglow.nvim" },
 }

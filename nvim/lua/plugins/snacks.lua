@@ -23,9 +23,15 @@ return {
             },
         },
         picker = {
+            ui_select = true,
             enabled = true,
             hidden = true,
             ignored = true,
+            layouts = {
+                select = {
+                    layout = { relative = "cursor" }, -- pop at cursor
+                },
+            },
         },
         indent = { enabled = true },
         scroll = { enabled = true },
@@ -69,7 +75,6 @@ return {
                             vim.schedule(function()
                                 vim.cmd("colorscheme " .. item.text)
                             end)
-                            require("config.set-tmux-line").UpdateTmuxLine()
                             local f = io.open(vim.fn.stdpath("config") .. "/last_colorscheme.vim", "w")
                             if f then
                                 f:write("colorscheme " .. item.text .. "\n")
@@ -137,13 +142,6 @@ return {
                 Snacks.picker.diagnostics_buffer()
             end,
             desc = "Search diagnostics (buffer)",
-        },
-        {
-            "<leader>ca",
-            function()
-                Snacks.picker.qflist()
-            end,
-            desc = "Quick fix",
         },
         -- LazyGit
         {

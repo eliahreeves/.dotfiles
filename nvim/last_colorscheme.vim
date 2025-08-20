@@ -1,1 +1,1 @@
-colorscheme vague
+colorscheme monoglow

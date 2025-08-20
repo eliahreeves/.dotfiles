@@ -6,10 +6,34 @@ if vim.env.NIX_NEOVIM then
             lazy = false,
             config = function()
                 local lspconfig = require("lspconfig")
+                local custom_servers = require("lspconfig.configs")
+                local util = require("lspconfig.util")
+
+                custom_servers.vtsls = {
+                    default_config = {
+                        cmd = { "vtsls", "--stdio" },
+                        filetypes = {
+                            "javascript",
+                            "javascriptreact",
+                            "javascript.jsx",
+                            "typescript",
+                            "typescriptreact",
+                            "typescript.tsx",
+                            "vue",
+                        },
+                        root_dir = function(fname)
+                            return util.root_pattern("package.json", "tsconfig.json", ".git")(fname)
+                                or util.path.dirname(fname)
+                        end,
+                        settings = {},
+                    },
+                }
+
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "hover" })
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "go to implementation" })
                 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "rename" })
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "code actions" })
                 vim.diagnostic.config({
                     signs = false,
                     virtual_text = {
@@ -25,10 +49,12 @@ if vim.env.NIX_NEOVIM then
                     update_in_insert = false,
                 })
 
-                lspconfig.lua_ls.setup({})
-                lspconfig.bashls.setup({})
-                lspconfig.nixd.setup({})
-                lspconfig.gopls.setup({})
+                vim.lsp.enable("lua_ls")
+                vim.lsp.enable("bashls")
+                vim.lsp.enable("nixd")
+                vim.lsp.enable("gopls")
+                vim.lsp.enable("pyright")
+                vim.lsp.enable("vtsls")
             end,
         },
     }
