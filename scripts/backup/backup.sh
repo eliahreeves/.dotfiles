@@ -32,6 +32,6 @@ backup "$HOME/.dotfiles/" .dotfiles
 backup "$HOME/.minecraft/" .minecraft
 backup "$HOME/.ssh/" .ssh
 backup "$HOME/.gnupg/" .gnupg
-backup "$HOME/nixos-config/" nixos-config
+backup "$HOME/nix-config/" nix-config
 
 echo "Backup complete. Log written to $LOG_FILE"
