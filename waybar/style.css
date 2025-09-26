@@ -64,6 +64,9 @@ button:hover {
   box-shadow: inset 0 -3px #ffffff;
 }
 
+#custom-calculator,
+#custom-tray-button,
+#tray,
 #bluetooth,
 #cpu,
 #memory,
@@ -82,9 +85,9 @@ button:hover {
   background-color: rgba(24, 22, 22, 1);
 }
 
-#memory {
-  padding-left: 12px;
-  border-radius: 10px 0 0 10px;
+#custom-tray-button {
+  padding-left: 10px;
+	border-radius: 10px 0 0 10px;
 }
 
 #battery {

@@ -13,6 +13,7 @@
 		"clock"
 	],
 	"modules-right": [
+		"group/tray-drawer",
 		"memory",
 		"cpu",
 		"temperature",
@@ -24,7 +25,7 @@
 		"custom/quick-settings",
 	],
 	"custom/quick-settings": {
-		"format": "󰣇 ",
+		"format": " ",
 		"on-click": "swaync-client -t -sw",
 		"tooltip": false,
 	},
@@ -62,7 +63,7 @@
 	"bluetooth": {
 		"format": "<span>󰂯</span>",
 		"format-connected": "<span>󰂱</span>",
-		"on-click": "blueberry",
+		"on-click": "ghostty -e bluetuith",
 		"tooltip": true,
 		"tooltip-format-connected": "{device_alias}",
 		"tooltip-format-connected-battery": "{device_alias} ({device_battery_percentage}%)",
@@ -73,6 +74,38 @@
 		"tooltip": false,
 		"on-click": "gnome-calendar", // "ags -t calendar"
 	},
+
+"group/tray-drawer": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "hidden",
+      "click-to-reveal": false,
+      "transition-left-to-right": true
+    },
+    "modules": [
+      "custom/tray-button",           // leader button
+      "tray",            // actual tray inside drawer
+			"custom/calculator",
+    ]
+  },
+
+  "custom/tray-button": {
+    "format": "",                    // your drawer icon (Nerd Font, emoji, etc.)
+    "tooltip": "Open System Tray"
+  },
+
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10,
+  },
+
+	"custom/calculator":{
+		"format": " ",
+		"on-click": "ghostty -e \"ipython --InteractiveShellApp.exec_lines='import math'\"",
+		"tooltip": false,
+	},
+
 	"cpu": {
 		"format": " {usage}%",
 		"tooltip": false,
