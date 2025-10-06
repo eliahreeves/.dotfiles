@@ -26,6 +26,7 @@ return {
             javascriptreact = { "eslint" },
             typescript = { "eslint" },
             typescriptreact = { "eslint" },
+            rust = { "rustfmt" },
         },
         default_format_opts = {
             lsp_format = "fallback",

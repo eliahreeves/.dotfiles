@@ -2,32 +2,51 @@ if vim.env.NIX_NEOVIM then
     return {
         {
             "neovim/nvim-lspconfig",
-            -- event = { "BufReadPre", "BufNewFile" },
             lazy = false,
             config = function()
                 local lspconfig = require("lspconfig")
-                local custom_servers = require("lspconfig.configs")
+                local configs = require("lspconfig.configs")
                 local util = require("lspconfig.util")
 
-                custom_servers.vtsls = {
-                    default_config = {
-                        cmd = { "vtsls", "--stdio" },
-                        filetypes = {
-                            "javascript",
-                            "javascriptreact",
-                            "javascript.jsx",
-                            "typescript",
-                            "typescriptreact",
-                            "typescript.tsx",
-                            "vue",
+                -- Define slang_server if not already defined
+                if not configs.slang_server then
+                    configs.slang_server = {
+                        default_config = {
+                            cmd = { "slang-server" },
+                            filetypes = { "verilog", "systemverilog" },
+                            single_file_support = true,
+                            root_dir = function(fname)
+                                return util.root_pattern(".slang-server.json", ".git")(fname)
+                            end,
+                            settings = {},
                         },
-                        root_dir = function(fname)
-                            return util.root_pattern("package.json", "tsconfig.json", ".git")(fname)
-                                or util.path.dirname(fname)
-                        end,
-                        settings = {},
-                    },
-                }
+                    }
+                end
+
+                -- Setup slang_server
+                lspconfig.slang_server.setup({})
+
+                if not configs.vtsls then
+                    configs.vtsls = {
+                        default_config = {
+                            cmd = { "vtsls", "--stdio" },
+                            filetypes = {
+                                "javascript",
+                                "javascriptreact",
+                                "javascript.jsx",
+                                "typescript",
+                                "typescriptreact",
+                                "typescript.tsx",
+                                "vue",
+                            },
+                            root_dir = function(fname)
+                                return util.root_pattern("package.json", "tsconfig.json", ".git")(fname)
+                                    or util.path.dirname(fname)
+                            end,
+                            settings = {},
+                        },
+                    }
+                end
 
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "hover" })
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
@@ -55,6 +74,7 @@ if vim.env.NIX_NEOVIM then
                 vim.lsp.enable("gopls")
                 vim.lsp.enable("pyright")
                 vim.lsp.enable("vtsls")
+                vim.lsp.enable("rust_analyzer")
             end,
         },
     }
