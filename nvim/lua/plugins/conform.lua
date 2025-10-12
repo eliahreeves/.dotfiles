@@ -27,6 +27,7 @@ return {
             typescript = { "eslint" },
             typescriptreact = { "eslint" },
             rust = { "rustfmt" },
+            json = { "jq" },
         },
         default_format_opts = {
             lsp_format = "fallback",

@@ -36,3 +36,21 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
         vim.cmd("tabnext " .. current_tab)
     end,
 })
+
+-- Auto-detect and reload Pyright when entering Python projects with UV
+vim.api.nvim_create_autocmd({ "BufEnter", "DirChanged" }, {
+    pattern = "*.py",
+    callback = function()
+        -- Check if we're in a UV project (has pyproject.toml or .venv)
+        local cwd = vim.fn.getcwd()
+        local has_pyproject = vim.fn.filereadable(cwd .. "/pyproject.toml") == 1
+        local has_venv = vim.fn.isdirectory(cwd .. "/.venv") == 1
+        
+        if has_pyproject or has_venv then
+            -- Restart Pyright to pick up the new environment
+            vim.schedule(function()
+                vim.cmd("LspRestart pyright")
+            end)
+        end
+    end,
+})
