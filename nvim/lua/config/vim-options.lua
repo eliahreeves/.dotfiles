@@ -12,6 +12,7 @@ vim.o.termguicolors = true
 vim.opt.ignorecase = true -- make search case-insensitive
 vim.opt.smartcase = true -- but make it case-sensitive if uppercase letters are used
 vim.opt.fillchars:append({ eob = " " })
+vim.opt.splitright = true
 
 local map = vim.keymap.set
 
@@ -40,6 +41,7 @@ map("n", "<leader>wl", "<C-W>l", { desc = "Window Right", remap = true })
 map("n", "<leader>wj", "<C-W>j", { desc = "Window Down", remap = true })
 map("n", "<leader>wk", "<C-W>k", { desc = "Window Up", remap = true })
 map("n", "<leader>ww", "<C-W>w", { desc = "Window Next", remap = true })
+vim.keymap.set("n", "q:", "<Nop>")
 
 -- ctrl+s save
 map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { noremap = true, silent = true })

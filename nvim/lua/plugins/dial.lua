@@ -113,6 +113,7 @@ return {
                 sass = "css",
                 scss = "css",
                 python = "python",
+                latex = "latex",
             },
             groups = {
                 default = {
@@ -127,6 +128,7 @@ return {
                     augend.constant.alias.bool,
                     logical_alias,
                 },
+                latex = { augend.constant.new({ elements = { "begin", "end" } }) },
                 vue = {
                     augend.constant.new({ elements = { "let", "const" } }),
                     augend.hexcolor.new({ case = "lower" }),

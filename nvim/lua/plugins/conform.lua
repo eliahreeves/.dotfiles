@@ -28,6 +28,7 @@ return {
             typescriptreact = { "eslint" },
             rust = { "rustfmt" },
             json = { "jq" },
+            tex = { "latexindent" },
         },
         default_format_opts = {
             lsp_format = "fallback",

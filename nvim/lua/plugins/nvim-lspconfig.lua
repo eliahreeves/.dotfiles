@@ -10,6 +10,9 @@ return {
             vim.lsp.enable("nixd")
             vim.lsp.enable("gopls")
             vim.lsp.enable("rust_analyzer")
+            vim.lsp.enable("texlab")
+            vim.lsp.enable("ltex_plus")
+            vim.lsp.enable("pyright")
         end,
     },
 }

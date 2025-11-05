@@ -26,7 +26,7 @@ return {
             ui_select = true,
             enabled = true,
             hidden = true,
-            ignored = true,
+            ignored = false,
             layouts = {
                 select = {
                     layout = { relative = "cursor" }, -- pop at cursor

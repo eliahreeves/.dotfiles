@@ -36,7 +36,6 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
         vim.cmd("tabnext " .. current_tab)
     end,
 })
-
 -- Auto-detect and reload Pyright when entering Python projects with UV
 vim.api.nvim_create_autocmd({ "BufEnter", "DirChanged" }, {
     pattern = "*.py",
