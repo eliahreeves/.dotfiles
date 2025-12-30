@@ -35,7 +35,7 @@ return {
         },
         indent = { enabled = true },
         scroll = { enabled = true },
-        image = { enabled = true },
+        image = { enabled = true, doc = { inline = false } },
         notifier = {
             enabled = true,
             timeout = 3000,

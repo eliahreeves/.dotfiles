@@ -6,7 +6,8 @@
 	"margin-left": 5,
 	"margin-right": 5,
 	"modules-left": [
-		"hyprland/workspaces"
+		"hyprland/workspaces",
+		"mpris"
 	],
 	"modules-center": [
 		"custom/no-sleep",
@@ -24,6 +25,21 @@
 		"battery",
 		"custom/quick-settings",
 	],
+
+
+	"mpris": {
+	"format": "{player_icon} {dynamic}",
+	"format-paused": "{status_icon} <i>{dynamic}</i>",
+	"player-icons": {
+		"default": "▶",
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "⏸"
+	},
+	// "ignored-players": ["firefox"]
+},
+
 	"custom/quick-settings": {
 		"format": " ",
 		"on-click": "swaync-client -t -sw",
@@ -102,7 +118,7 @@
 
 	"custom/calculator":{
 		"format": " ",
-		"on-click": "ghostty -e \"ipython --InteractiveShellApp.exec_lines='import math'\"",
+		"on-click": "ghostty -e ~/.dotfiles/waybar/scripts/calc.sh",
 		"tooltip": false,
 	},
 

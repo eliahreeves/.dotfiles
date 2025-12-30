@@ -22,6 +22,13 @@ if vim.fn.filereadable(last) == 1 then
     vim.cmd("source " .. last)
 end
 
+vim.keymap.set("n", "j", function()
+    return vim.v.count == 0 and "gj" or "j"
+end, { expr = true })
+
+vim.keymap.set("n", "k", function()
+    return vim.v.count == 0 and "gk" or "k"
+end, { expr = true })
 -- buffer stuff
 map("n", "<leader>bd", ":bd<CR>", { desc = "Close buffer", noremap = true, silent = true })
 map("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Close other buffers", noremap = true, silent = true })

@@ -1,10 +1,10 @@
 font-family = "CaskaydiaMono Nerd Font"
-mouse-scroll-multiplier = 0.25
+mouse-scroll-multiplier = 0.15
 font-style = SemiBold
 font-style-bold = ExtraBold
 font-style-italic = SemiBold Italic
 font-style-bold-italic = ExtraBold Italic
-font-size = 13
+font-size = 14
 
 palette = 0=#252530
 palette = 1=#d8647e

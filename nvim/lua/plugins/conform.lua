@@ -22,13 +22,11 @@ return {
             bash = { "shfmt" },
             go = { "gofumpt" },
             python = { "ruff" },
-            javascript = { "eslint" },
-            javascriptreact = { "eslint" },
-            typescript = { "eslint" },
-            typescriptreact = { "eslint" },
             rust = { "rustfmt" },
             json = { "jq" },
             tex = { "latexindent" },
+            verilog = { "verible-verilog-format" },
+            systemverilog = { "verible-verilog-format" },
         },
         default_format_opts = {
             lsp_format = "fallback",
@@ -44,6 +42,11 @@ return {
             },
             stylua = { prepend_args = { "--indent-type", "Spaces" } },
             ruff = { prepend_args = { "format" } },
+            ["verible-verilog-format"] = {
+                command = "verible-verilog-format",
+                args = { "-" },
+                -- args = { "--failsafe_=false" },
+            },
         },
     },
     init = function()

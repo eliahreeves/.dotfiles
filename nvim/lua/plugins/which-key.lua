@@ -14,6 +14,7 @@ return {
                 { "<leader>q", group = "persistance", icon = { icon = " ", color = "yellow" } },
                 { "<leader>u", group = "utility", icon = { icon = "󰖷 " } },
                 { "<leader>uc", desc = "Toggle multicursor" },
+                { "<leader>uv", desc = "Open vscode in current dir" },
                 { "<down>", desc = "Add cursor below" },
                 { "<esc>", desc = "Enable/clear cursors" },
                 { "<leader><down>", desc = "Skip cursor down" },
@@ -26,5 +27,13 @@ return {
             },
         },
     },
-    keys = {},
+    keys = {
+        {
+            "<leader>uv",
+            function()
+                vim.cmd("!code .")
+            end,
+            desc = "Open vscode in current dir",
+        },
+    },
 }
