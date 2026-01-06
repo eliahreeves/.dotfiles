@@ -1,5 +1,5 @@
 font-family = "CaskaydiaMono Nerd Font"
-mouse-scroll-multiplier = 0.15
+mouse-scroll-multiplier = 0.8
 font-style = SemiBold
 font-style-bold = ExtraBold
 font-style-italic = SemiBold Italic
@@ -31,6 +31,6 @@ selection-foreground = #cdcdcd
 background = #000000
 keybind = performable:ctrl+c=copy_to_clipboard
 keybind = ctrl+v=paste_from_clipboard
-background-opacity = 0.5
+window-decoration = none
 confirm-close-surface = false
 
