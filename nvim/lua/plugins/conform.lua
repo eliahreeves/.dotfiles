@@ -24,14 +24,16 @@ return {
             python = { "ruff" },
             rust = { "rustfmt" },
             json = { "jq" },
+            markdown = { "injected" },
             tex = { "latexindent" },
-            verilog = { "verible-verilog-format" },
-            systemverilog = { "verible-verilog-format" },
+            sql = { "sql_formatter" },
+            -- verilog = { "verible-verilog-format" },
+            -- systemverilog = { "verible-verilog-format" },
         },
         default_format_opts = {
             lsp_format = "fallback",
-            tab_width = 4, -- Adjust tab width as needed
-            use_tabs = false, -- If supported by the formatter
+            tab_width = 4,
+            use_tabs = false,
         },
         -- Set up format-on-save
         format_on_save = { timeout_ms = 500 },
@@ -40,13 +42,16 @@ return {
             shfmt = {
                 prepend_args = { "-i", "2" },
             },
+            sql_formatter = {
+                args = { "--config", '{"language": "postgresql", "uppercase": true}' },
+            },
             stylua = { prepend_args = { "--indent-type", "Spaces" } },
             ruff = { prepend_args = { "format" } },
-            ["verible-verilog-format"] = {
-                command = "verible-verilog-format",
-                args = { "-" },
-                -- args = { "--failsafe_=false" },
-            },
+            -- ["verible-verilog-format"] = {
+            --     command = "verible-verilog-format",
+            --     args = { "-" },
+            --     -- args = { "--failsafe_=false" },
+            -- },
         },
     },
     init = function()
