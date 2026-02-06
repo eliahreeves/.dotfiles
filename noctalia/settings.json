@@ -21,14 +21,14 @@
         "sortByMostUsed": true,
         "terminalCommand": "alacritty -e",
         "useApp2Unit": false,
-        "viewMode": "list"
+        "viewMode": "grid"
     },
     "audio": {
         "cavaFrameRate": 30,
         "mprisBlacklist": [
         ],
         "preferredPlayer": "",
-        "visualizerType": "mirrored",
+        "visualizerType": "linear",
         "volumeFeedback": false,
         "volumeOverdrive": false,
         "volumeStep": 5
@@ -59,15 +59,57 @@
         "widgets": {
             "center": [
                 {
+                    "id": "plugin:weekly-calendar"
+                },
+                {
+                    "customFont": "",
+                    "formatHorizontal": "h:mm AP ddd, MMM dd",
+                    "formatVertical": "HH mm - dd MM",
+                    "id": "Clock",
+                    "tooltipFormat": "HH:mm ddd, MMM dd",
+                    "useCustomFont": false,
+                    "usePrimaryColor": false
+                },
+                {
+                    "colorName": "primary",
+                    "hideWhenIdle": true,
+                    "id": "AudioVisualizer",
+                    "width": 250
+                },
+                {
+                    "compactMode": false,
+                    "compactShowAlbumArt": true,
+                    "compactShowVisualizer": false,
+                    "hideMode": "hidden",
+                    "hideWhenIdle": false,
+                    "id": "MediaMini",
+                    "maxWidth": 145,
+                    "panelShowAlbumArt": true,
+                    "panelShowVisualizer": true,
+                    "scrollingMode": "hover",
+                    "showAlbumArt": true,
+                    "showArtistFirst": true,
+                    "showProgressRing": true,
+                    "showVisualizer": false,
+                    "useFixedWidth": false,
+                    "visualizerType": "linear"
+                }
+            ],
+            "left": [
+                {
+                    "icon": "rocket",
+                    "id": "Launcher",
+                    "usePrimaryColor": false
+                },
+                {
                     "compactMode": true,
                     "diskPath": "/",
                     "id": "SystemMonitor",
                     "showCpuFreq": false,
                     "showCpuTemp": true,
                     "showCpuUsage": true,
-                    "showDiskAvailable": false,
+                    "showDiskAsFree": false,
                     "showDiskUsage": false,
-                    "showDiskUsageAsPercent": false,
                     "showGpuTemp": false,
                     "showLoadAverage": false,
                     "showMemoryAsPercent": false,
@@ -78,12 +120,6 @@
                     "usePrimaryColor": false
                 },
                 {
-                    "colorName": "primary",
-                    "hideWhenIdle": true,
-                    "id": "AudioVisualizer",
-                    "width": 200
-                },
-                {
                     "characterCount": 2,
                     "colorizeIcons": false,
                     "emptyColor": "secondary",
@@ -91,33 +127,16 @@
                     "focusedColor": "primary",
                     "followFocusedScreen": false,
                     "groupedBorderOpacity": 1,
-                    "hideUnoccupied": false,
+                    "hideUnoccupied": true,
                     "iconScale": 0.8,
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
-                    "pillSize": 0.6,
                     "reverseScroll": false,
                     "showApplications": false,
                     "showBadge": true,
                     "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
-                }
-            ],
-            "left": [
-                {
-                    "icon": "rocket",
-                    "id": "Launcher",
-                    "usePrimaryColor": false
-                },
-                {
-                    "clockColor": "none",
-                    "customFont": "",
-                    "formatHorizontal": "h:mm AP",
-                    "formatVertical": "HH mm - dd MM",
-                    "id": "Clock",
-                    "tooltipFormat": "HH:mm ddd, MMM dd",
-                    "useCustomFont": false
                 },
                 {
                     "colorizeIcons": false,
@@ -127,7 +146,7 @@
                     "maxTaskbarWidth": 40,
                     "onlyActiveWorkspaces": true,
                     "onlySameOutput": true,
-                    "showPinnedApps": true,
+                    "showPinnedApps": false,
                     "showTitle": false,
                     "smartWidth": true,
                     "titleWidth": 120
@@ -166,12 +185,13 @@
                 },
                 {
                     "deviceNativePath": "__default__",
-                    "displayMode": "icon-always",
-                    "hideIfIdle": false,
+                    "displayMode": "alwaysShow",
+                    "hideIfIdle": true,
                     "hideIfNotDetected": true,
                     "id": "Battery",
-                    "showNoctaliaPerformance": false,
-                    "showPowerProfiles": false
+                    "showNoctaliaPerformance": true,
+                    "showPowerProfiles": false,
+                    "warningThreshold": 30
                 },
                 {
                     "colorizeDistroLogo": false,
@@ -310,7 +330,7 @@
         "boxRadiusRatio": 1,
         "compactLockScreen": false,
         "dimmerOpacity": 0.2,
-        "enableLockScreenCountdown": true,
+        "enableLockScreenCountdown": false,
         "enableShadows": true,
         "forceBlackScreenCorners": false,
         "iRadiusRatio": 1,
@@ -373,8 +393,6 @@
     },
     "notifications": {
         "backgroundOpacity": 1,
-        "batteryCriticalThreshold": 5,
-        "batteryWarningThreshold": 20,
         "criticalUrgencyDuration": 15,
         "enableKeyboardLayoutToast": true,
         "enableMediaToast": false,
@@ -462,14 +480,12 @@
         "showHeader": true,
         "showNumberLabels": true
     },
-    "settingsVersion": 47,
+    "settingsVersion": 46,
     "systemMonitor": {
         "cpuCriticalThreshold": 90,
         "cpuPollingInterval": 2000,
         "cpuWarningThreshold": 80,
         "criticalColor": "",
-        "diskAvailCriticalThreshold": 10,
-        "diskAvailWarningThreshold": 20,
         "diskCriticalThreshold": 90,
         "diskPollingInterval": 30000,
         "diskWarningThreshold": 80,
@@ -486,6 +502,7 @@
         "swapCriticalThreshold": 90,
         "swapWarningThreshold": 80,
         "tempCriticalThreshold": 90,
+        "tempPollingInterval": 3000,
         "tempWarningThreshold": 80,
         "useCustomColors": false,
         "warningColor": ""
@@ -512,7 +529,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/erreeves/Pictures/Wallpapers",
+        "directory": "/home/erreeves/Pictures/wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "fillColor": "#000000",
@@ -537,7 +554,7 @@
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
         "wallhavenPurity": "100",
-        "wallhavenQuery": "",
+        "wallhavenQuery": "nature",
         "wallhavenRatios": "",
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",
