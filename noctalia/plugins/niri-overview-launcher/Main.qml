@@ -9,14 +9,12 @@ Item {
     property var pluginApi: null
     property bool inOverview: CompositorService.overviewActive
     property bool launcherOpen: false
-    readonly property bool isNiri: CompositorService.isNiri
 
     Connections {
         target: CompositorService
 
         function onOverviewActiveChanged() {
             if (!CompositorService.overviewActive) {
-                // Overview just closed - reset launcher state
                 root.launcherOpen = false;
             }
         }
@@ -55,7 +53,7 @@ Item {
 
             WlrLayershell.namespace: "noctalia:niri-overview-launcher"
             WlrLayershell.layer: WlrLayer.Overlay
-						// WlrLayershell.exclusionMode: ExclusionMode.Ignore
+						WlrLayershell.exclusionMode: ExclusionMode.Ignore
             WlrLayershell.keyboardFocus: {
                 if (!root.inOverview) return WlrKeyboardFocus.None;
                 if (root.launcherOpen) return WlrKeyboardFocus.None;

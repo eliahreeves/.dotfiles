@@ -383,13 +383,13 @@
         "wifiEnabled": true
     },
     "nightLight": {
-        "autoSchedule": true,
+        "autoSchedule": false,
         "dayTemp": "6500",
         "enabled": true,
         "forced": false,
         "manualSunrise": "06:30",
-        "manualSunset": "18:30",
-        "nightTemp": "3452"
+        "manualSunset": "22:00",
+        "nightTemp": "3203"
     },
     "notifications": {
         "backgroundOpacity": 1,

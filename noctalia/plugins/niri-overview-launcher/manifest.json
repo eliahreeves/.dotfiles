@@ -3,11 +3,13 @@
   "name": "Niri Overview Launcher",
   "version": "1.0.0",
   "minNoctaliaVersion": "4.1.2",
-  "author": "Your Name",
+  "author": "eliahreeves",
   "license": "MIT",
   "repository": "https://github.com/noctalia-dev/noctalia-plugins",
   "description": "Opens the launcher when typing in niri's overview mode",
-  "tags": ["System", "Launcher", "Utility"],
+  "tags": [
+    "System"
+  ],
   "entryPoints": {
     "main": "Main.qml"
   },

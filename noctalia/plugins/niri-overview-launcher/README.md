@@ -6,7 +6,7 @@ A Noctalia plugin that automatically opens the launcher when you start typing in
 
 - Detects when niri's overview mode is active
 - Captures keyboard input when in overview mode
-- Opens the Noctalia launcher (`qs -c noctalia-shell ipc call launcher toggle`) when you type any text
+- Opens the Noctalia launcher when you type any text
 - Ignores special keys, modifiers, and navigation keys so they still work in overview mode
 
 ## Requirements
@@ -14,18 +14,6 @@ A Noctalia plugin that automatically opens the launcher when you start typing in
 - Noctalia 4.1.2 or higher
 - Niri window manager
 - The niri socket must be available via `$NIRI_SOCKET` environment variable
-
-## Installation
-
-1. Copy this plugin directory to your Noctalia plugins folder
-2. Restart Noctalia or reload plugins
-3. The plugin will automatically activate when using niri
-
-## Usage
-
-1. Enter niri's overview mode (usually with `Mod+Tab` or your configured keybinding)
-2. Start typing - the launcher will automatically open
-3. The launcher will be pre-filled with your typed character
 
 ## How it works
 
